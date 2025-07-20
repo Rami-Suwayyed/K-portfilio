@@ -1,0 +1,179 @@
+{
+  "welcome": "Welcome",
+  "hello": "Hello {{name}}",
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "menu": "Menu",
+    "feature": "Features",
+    "pricing": "brands",
+    "review": "Reviews",
+    "contact": "Contact"
+  },
+  "buttons": {
+    "startFreeTrial": "Order Now",
+    "readMore": "View Menu",
+    "contactUs": "Contact Us"
+  },
+  "hero": {
+    "title": "Order Delicious Traditional Food with Kabseh App",
+    "subtitle": "Experience the authentic taste of traditional cuisine delivered right to your doorstep. Fast, fresh, and full of flavor - that's what Kabseh brings to your table."
+  },
+  "about": {
+    "subtitle": "About Kabseh",
+    "title": "#1 Food Delivery App",
+    "description": "Kabseh connects you with the finest traditional restaurants in your area. From aromatic rice dishes to succulent grilled meats, we deliver authentic flavors that remind you of home cooking.",
+    "activeInstall": "Active Orders",
+    "clientsReviews": "Customer Reviews"
+  },
+  "features": {
+    "highResolution": {
+      "title": "High Quality Images",
+      "description": "Browse through stunning high-resolution photos of our dishes to make your selection easier and more appetizing."
+    },
+    "retinaReady": {
+      "title": "Mobile Optimized",
+      "description": "Our app is perfectly optimized for all devices, ensuring a smooth ordering experience on any screen size."
+    },
+    "editableData": {
+      "title": "Customizable Orders",
+      "description": "Personalize your meals with special instructions, dietary preferences, and portion adjustments to suit your taste."
+    },
+    "fullySecured": {
+      "title": "Secure Payments",
+      "description": "Your payment information is fully protected with advanced encryption and secure payment gateway integration."
+    },
+    "cloudStorage": {
+      "title": "Order History",
+      "description": "Access your previous orders anytime and reorder your favorite meals with just a few taps."
+    },
+    "fullyResponsive": {
+      "title": "Real-time Tracking",
+      "description": "Track your order from kitchen to doorstep with live updates and estimated delivery times."
+    }
+  },
+  "process": {
+    "install": {
+      "title": "Download the App",
+      "description": "Get Kabseh from your app store and create your account to start exploring traditional flavors in your area."
+    },
+    "setup": {
+      "title": "Choose Your Meal",
+      "description": "Browse our extensive menu of traditional dishes, read reviews, and select your favorite meals to add to cart."
+    },
+    "enjoy": {
+      "title": "Enjoy Fresh Food",
+      "description": "Sit back and relax while we prepare and deliver your authentic traditional meal hot and fresh to your door."
+    }
+  },
+  "contactUs": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch!",
+    "description": "We're here to help you with any questions or concerns you may have. Please fill out the form below and we'll get back to you as soon as possible.",
+    "email": "Email",
+    "phone": "Phone",
+    "successMessage": "Message sent successfully! We'll get back to you soon.",
+    "errorMessage": "Something went wrong. Please try again.",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us more about your inquiry...",
+      "sendMessage": "Send Message",
+      "sending": "Sending..."
+    },
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "nameMax": "Name is too long",
+      "emailInvalid": "Please enter a valid email address",
+      "subjectMin": "Subject must be at least 5 characters",
+      "subjectMax": "Subject is too long",
+      "messageMin": "Message must be at least 10 characters",
+      "messageMax": "Message is too long",
+      "nameOfOwnerMin": "Name of owner must be at least 5 characters",
+      "nameOfOwnerMax": "Name of owner is too long",
+      "phoneMin": "Phone must be at least 10 characters",
+      "phoneMax": "Phone is too long",
+      "locationMin": "Location must be at least 10 characters",
+      "locationMax": "Location is too long",
+      "vehicleTypeMin": "Vehicle type must be at least 2 characters",
+      "vehicleTypeMax": "Vehicle type is too long",
+      "vehicleModelMin": "Vehicle model must be at least 2 characters",
+      "vehicleModelMax": "Vehicle model is too long",
+      "addressMin": "Address must be at least 10 characters",
+      "addressMax": "Address is too long",
+      "phoneTypeMin": "Please select a phone type",
+      "vehicleNumberMin": "Vehicle number must be at least 2 characters",
+      "vehicleNumberMax": "Vehicle number is too long",
+      "vehicleColorMin": "Vehicle color must be at least 2 characters",
+      "vehicleColorMax": "Vehicle color is too long",
+      "vehicleYearMin": "Vehicle year must be at least 2 characters",
+      "vehicleYearMax": "Vehicle year is too long",
+      "fullNameMin": "Full name must be at least 2 characters",
+      "fullNameMax": "Full name is too long"
+    }
+  },
+  "easySteps": {
+    "title1": "Install the App",
+    "description1": "Get Kabseh from your app store and create your account to start exploring traditional flavors in your area.",
+    "title2": "Setup Your Profile",
+    "description2": "Create your account and setup your profile to start exploring traditional flavors in your area.",
+    "title3": "Enjoy The Features",
+    "description3": "Browse our extensive menu of traditional dishes, read reviews, and select your favorite meals to add to cart."
+  },
+  "registerResturant": {
+    "title": "Join Kabseh JO!",
+    "description1": "Kabseh takes zero commission and no registration fees.",
+    "description2": "You earn more, and we handle the delivery.",
+    "description3": "Fill out the form now and start reaching more customers with less cost.",
+    "button": "Register Now"
+  },
+  "registerCaptin": {
+    "title": "Join Kabseh’s Delivery Team!",
+    "description1": "Apply now and start working as a Kabseh Captain with weekly payments, performance bonuses, orders from local restaurants near you, and flexible working hours!",    
+    "button": "Register Now"
+  },
+  "modal": {
+    "title": "Register Resturant",
+    "name": "Restaurant Name",
+    "nameOfOwner": "Owner or The ِAuthorized Person Name",
+    "Email Address": "Email Address",
+    "phone": "Mobile Number",
+    "Location ": "Location ",
+    "submit": "Submit",
+    "successMessage": "Message sent successfully! We'll get back to you soon.",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "clients": {
+    "title": "Top Restaurant",
+    "subtitle": "Brands in Jordan",
+    "description": "Partner with Jordan&apos;s most trusted restaurant brands and enjoy seamless food delivery",
+    "button": "View All Partners"
+  },
+  "footer": {
+  "address": "Address",
+  "addressText": "123 Street, New York, USA",
+  "quickLinks": "Quick Links",
+  "popularLinks": "Popular Links",
+  "newsletter": "Newsletter",
+  "newsletterText": "Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu",
+  "emailPlaceholder": "Your Email",
+  "aboutUs": "About Us",
+  "contactUs": "Contact Us",
+  "privacyPolicy": "Privacy Policy",
+  "termsConditions": "Terms & Conditions",
+  "career": "Career",
+  "siteName": "Your Site Name",
+  "allRightsReserved": "All Rights Reserved",
+  "designedBy": "Designed By",
+  "home": "Home",
+  "cookies": "Cookies",
+  "help": "Help",
+  "faqs": "FAQs"
+},
+  "appName": "Kabseh"
+}
