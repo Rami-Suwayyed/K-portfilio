@@ -7,19 +7,15 @@ import Modal from './Modal/ModalResturant'
 function RegisterResturant() {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
-    
+
     const handleOpenModal = () => {
         setIsOpen(true)
     }
-    
-    const handleCloseModal = () => {
-        setIsOpen(false)
-    }
-    
+
     return (
         <>
-            {isOpen && <Modal setIsOpen={handleCloseModal} />}
-            <section className="py-16 lg:py-24 bg-[var(--background-default)] overflow-hidden">
+            {isOpen && <Modal setIsOpen={setIsOpen} />}
+            <section className="py-16 lg:py-24 mt-16 bg-[var(--background-default)] overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
                         <div className="flex-1 max-w-2xl lg:max-w-none">
@@ -32,7 +28,7 @@ function RegisterResturant() {
                                     </h1>
                                     <div className="w-24 h-1 bg-primary-gradient mt-6 rounded-full"></div>
                                 </div>
-                                
+
                                 <div className="space-y-6 slideInLeft">
                                     <div className="text-lg lg:text-xl text-[var(--text-body)] leading-relaxed space-y-4">
                                         <p className="transform transition-all duration-300 hover:translate-x-2">
@@ -46,9 +42,9 @@ function RegisterResturant() {
                                         </p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="slideInUp">
-                                    <button 
+                                    <button
                                         className="btn-secondary-gradient px-8 py-4 rounded-[var(--border-radius)] text-lg font-semibold text-white shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[var(--primary)] focus:ring-opacity-50"
                                         onClick={handleOpenModal}
                                     >
@@ -60,34 +56,34 @@ function RegisterResturant() {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="flex-1 max-w-2xl lg:max-w-none">
                             <div className="slideInRight">
                                 <div className="relative group">
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary-dark)] rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div>
-                                    
-                                    <div className="relative bg-white rounded-3xl p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-500 transform group-hover:scale-105">
+                                    {/* <div className="absolute -inset-4 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary-dark)] rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div> */}
+
+                                    <div className="">
                                         <div className="relative overflow-hidden rounded-2xl">
-                                            <Image 
-                                                src={registerResturant} 
+                                            <Image
+                                                src={registerResturant}
                                                 alt="Register Restaurant"
                                                 className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
                                                 priority
                                             />
-                                            
-                                            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                                            {/* <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
                                         </div>
                                     </div>
-                                    
-                                    <div className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full opacity-20 animate-pulse"></div>
-                                    <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--secondary-dark)] rounded-full opacity-30 animate-pulse delay-1000"></div>
+
+                                    {/* <div className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full opacity-20 animate-pulse"></div>
+                                    <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--secondary-dark)] rounded-full opacity-30 animate-pulse delay-1000"></div> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-        
+
+
             </section>
         </>
     )

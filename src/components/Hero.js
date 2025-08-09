@@ -65,7 +65,7 @@ export default function HeroSection({scrollToContact}) {
         priority
       />
 
-      <div className="relative z-10 min-h-screen flex items-center pt-32 pb-24 md:pt-16 md:pb-0">
+      <div className="relative z-10 min-h-screen flex items-center pt-32 pb-24 md:pt-2 md:pb-0">
         <div className="container mx-auto px-4 lg:px-8 max-w-8xl">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className={`lg:col-span-8 text-center ${isRTL ? 'lg:text-right' : 'lg:text-left'} space-y-8`}>
@@ -87,7 +87,7 @@ export default function HeroSection({scrollToContact}) {
               </div>
             </div>
 
-            <div className={`lg:col-span-4 flex justify-center ${isRTL ? 'lg:justify-start' : 'lg:justify-end'} fadeInUp`}>
+            <div className={`lg:col-span-4 flex pr-20 pt-10 justify-center ${isRTL ? 'lg:justify-start' : 'lg:justify-end'} fadeInUp`}>
               <div className="relative w-[253px] h-[500px] p-[15px]">
                 <div className="absolute inset-0 z-10 pointer-events-none">
                   <Image

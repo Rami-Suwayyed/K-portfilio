@@ -12,22 +12,18 @@ function RegisterCaptin() {
         setIsOpen(true)
     }
 
-    const handleCloseModal = () => {
-        setIsOpen(false)
-    }
-
     return (
         <>
-            {isOpen && <Modal setIsOpen={handleCloseModal} />}
+            {isOpen && <Modal setIsOpen={setIsOpen} />}
             <section className="py-16 lg:py-24 bg-[var(--background-default)] overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
                         <div className="flex-1 max-w-2xl lg:max-w-none">
                             <div className="slideInRight">
                                 <div className="relative group">
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary-dark)] rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div>
+                                    {/* <div className="absolute -inset-4 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary-dark)] rounded-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div> */}
 
-                                    <div className="relative bg-white rounded-3xl p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-500 transform group-hover:scale-105">
+                                    <div className="">
                                         <div className="relative overflow-hidden rounded-2xl">
                                             <Image
                                                 src={registerCaptin}
@@ -36,12 +32,12 @@ function RegisterCaptin() {
                                                 priority
                                             />
 
-                                            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                            {/* <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
                                         </div>
                                     </div>
 
-                                    <div className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full opacity-20 animate-pulse"></div>
-                                    <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--secondary-dark)] rounded-full opacity-30 animate-pulse delay-1000"></div>
+                                    {/* <div className="absolute -top-6 -right-6 w-12 h-12 bg-[var(--primary)] rounded-full opacity-20 animate-pulse"></div>
+                                    <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-[var(--secondary-dark)] rounded-full opacity-30 animate-pulse delay-1000"></div> */}
                                 </div>
                             </div>
                         </div>

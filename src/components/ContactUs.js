@@ -5,6 +5,9 @@ import * as z from "zod"
 import toast from "react-hot-toast"
 import { useTranslation } from 'react-i18next'
 import ErrorMessage from './common/ErrorMessage'
+import axios from 'axios'
+import { Send } from 'lucide-react'
+
 const createContactSchema = (t) => z.object({
     name: z.string()
         .min(2, t('contactUs.validation.nameMin'))
@@ -40,9 +43,12 @@ function ContactUs({ contactRef }) {
 
     const onSubmit = async (data) => {
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000))
+             await axios.post('/api/contact', data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
 
-            console.log("Form submitted:", data)
             toast.success(t('contactUs.successMessage'), {
                 duration: 4000,
                 position: 'top-center',
@@ -56,10 +62,16 @@ function ContactUs({ contactRef }) {
                     direction: isRTL ? 'rtl' : 'ltr',
                     textAlign: isRTL ? 'right' : 'left'
                 }
-            })
-            reset()
+            });
+
+            reset();
+
         } catch (error) {
-            toast.error(t('contactUs.errorMessage'), {
+            console.error('Form submission error:', error);
+            
+            const errorMessage = error.response?.data?.error || error.message || t('contactUs.errorMessage');
+            
+            toast.error(errorMessage, {
                 duration: 4000,
                 position: 'top-center',
                 style: {
@@ -72,7 +84,7 @@ function ContactUs({ contactRef }) {
                     direction: isRTL ? 'rtl' : 'ltr',
                     textAlign: isRTL ? 'right' : 'left'
                 }
-            })
+            });
         }
     }
 
@@ -82,11 +94,10 @@ function ContactUs({ contactRef }) {
             ref={contactRef}
             id='contact'
             style={{ backgroundColor: 'var(--background-default)', marginTop: '100px' }}
-            dir={isRTL ? 'rtl' : 'ltr'}
+            // dir={isRTL ? 'ltr' : 'ltr'}
         >
             <div className="max-w-6xl mx-auto">
                 <div className={`grid lg:grid-cols-2 gap-16 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
-                    {/* Content Section */}
                     <div className={`space-y-8 ${isRTL ? 'lg:col-start-2' : ''}`}>
                         <div className="space-y-4">
                             <h2
@@ -109,7 +120,6 @@ function ContactUs({ contactRef }) {
                             </p>
                         </div>
 
-                        {/* Contact Info */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className={`flex items-center ${isRTL ? 'space-x-reverse' : ''} space-x-4`}>
                                 <div
@@ -137,7 +147,7 @@ function ContactUs({ contactRef }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </div>
-                                <div className={isRTL ? 'text-right' : 'text-left'}>
+                                <div className={isRTL ? 'text-left' : 'text-left'}>
                                     <h3 className="font-semibold" style={{ color: 'var(--secondary-dark)' }}>
                                         {t('contactUs.phone')}
                                     </h3>
@@ -147,10 +157,8 @@ function ContactUs({ contactRef }) {
                         </div>
                     </div>
 
-                    {/* Form Section */}
                     <div className={`bg-white rounded-3xl shadow-2xl p-8 md:p-12 ${isRTL ? 'lg:col-start-1' : ''}`}>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                            {/* Name Field */}
                             <div className="space-y-2">
                                 <label
                                     htmlFor="name"
@@ -261,14 +269,7 @@ function ContactUs({ contactRef }) {
                                 ) : (
                                     <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse' : ''} space-x-2`}>
                                         <span>{t('contactUs.form.sendMessage')}</span>
-                                        <svg
-                                            className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`}
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                        </svg>
+                                        {/* <Send className={`w-5 h-5 ${isRTL ? 'scale-x-[-1] mr-2' : 'ml-2'}`} /> */}
                                     </div>
                                 )}
                             </button>

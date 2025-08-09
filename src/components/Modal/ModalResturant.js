@@ -6,11 +6,11 @@ import * as z from "zod"
 import toast from "react-hot-toast"
 import ErrorMessage from '../common/ErrorMessage'
 import { X } from 'lucide-react'
-
-function Modal({ setIsOpen  }) {
+import axios from 'axios'
+function Modal({ setIsOpen }) {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.language === 'ar';
-    
+
     const createContactSchema = (t) => z.object({
         name: z.string()
             .min(2, t('contactUs.validation.nameMin'))
@@ -27,14 +27,18 @@ function Modal({ setIsOpen  }) {
             .min(10, t('contactUs.validation.locationMin'))
             .max(100, t('contactUs.validation.locationMax')),
     })
-    
-    const { register, handleSubmit, formState: { errors } } = useForm({
+
+    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({
         resolver: zodResolver(createContactSchema(t))
     })
-    
+
+    const handleClose = () => {
+        setIsOpen(false);
+    }
+
     const onSubmit = async (data) => {
-        console.log(data)
         try {
+            await axios.post('/api/regsiter-resturant', data);
             toast.success(t('modal.successMessage'), {
                 duration: 4000,
                 position: 'top-center',
@@ -49,32 +53,37 @@ function Modal({ setIsOpen  }) {
                     textAlign: isRTL ? 'right' : 'left'
                 }
             })
+            
+            setIsOpen(false);
+            reset();
         } catch (error) {
             console.log(error)
             toast.error(t('modal.errorMessage'), {
                 duration: 4000,
                 position: 'top-center',
                 style: {
-                    background: 'var(--primary)',
+                    background: '#ef4444',
                     color: 'white',
+                    borderRadius: '25px',
+                    padding: '16px 24px',
+                    fontSize: '16px',
+                    fontWeight: '500',
+                    direction: isRTL ? 'rtl' : 'ltr',
+                    textAlign: isRTL ? 'right' : 'left'
                 }
             })
         }
     }
-    
-    const handleClose = () => {
-        setIsOpen(false);
-    }
-    
+
     const handleBackdropClick = (e) => {
         if (e.target === e.currentTarget) {
             handleClose();
         }
     }
-    
+
     return (
         <>
-            <div 
+            <div
                 className='fixed inset-0 bg-[var(--secondary-light)] bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn'
                 onClick={handleBackdropClick}
             >
@@ -88,7 +97,7 @@ function Modal({ setIsOpen  }) {
                     >
                         <X size={20} />
                     </button>
-                    
+
                     <div className='bg-gradient-to-r from-[var(--primary)] to-red-600 p-6 rounded-t-3xl text-center'>
                         <h1 className='text-2xl font-bold text-[var(--text-heading)] mb-2'>{t('modal.title')}</h1>
                     </div>
@@ -167,9 +176,17 @@ function Modal({ setIsOpen  }) {
                         <div className='pt-4'>
                             <button
                                 type="submit"
-                                className='w-full bg-gradient-to-r from-[var(--primary)] to-red-600 text-[var(--text-heading)] py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-in-out hover:from-red-600 hover:to-[var(--primary)]'
+                                disabled={isSubmitting}
+                                className='w-full bg-gradient-to-r from-[var(--primary)] to-red-600 text-[var(--text-heading)] py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-in-out hover:from-red-600 hover:to-[var(--primary)] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none'
                             >
-                                {t('modal.submit')}
+                                {isSubmitting ? (
+                                    <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse' : ''} space-x-2`}>
+                                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                                        <span>{t('modal.submitting')}</span>
+                                    </div>
+                                ) : (
+                                    t('modal.submit')
+                                )}
                             </button>
                         </div>
                     </form>

@@ -12,7 +12,7 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -34,7 +34,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'feature', 'brands', 'review', 'contact']
+      const sections = ['home', 'about', 'feature', 'brands', 'downloadApp', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -72,7 +72,7 @@ export default function Navigation() {
     { id: 'about', label: t('navigation.about') || 'About' },
     { id: 'feature', label: t('navigation.feature') || 'Feature' },
     { id: 'brands', label: t('navigation.pricing') || 'Pricing' },
-    { id: 'review', label: t('navigation.review') || 'Review' },
+    { id: 'downloadApp', label: t('navigation.downloadApp') || 'Download App' },
     { id: 'contact', label: t('navigation.contact') || 'Contact' }
   ]
 

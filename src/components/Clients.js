@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { useTranslation } from 'react-i18next';
+
 const Clients = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   const restaurantBrands = [
     {
       id: 1,
@@ -46,11 +48,13 @@ const Clients = () => {
   ];
 
   const animation = { duration: 25000, easing: (t) => t };
+  const isRTL = i18n.language === 'ar';
 
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
     renderMode: "performance",
     mode: "free",
+    rtl: isRTL,
     slides: {
       perView: "auto",
       spacing: 48,
@@ -73,6 +77,14 @@ const Clients = () => {
       s.moveToIdx(s.track.details.abs + 5, true, animation);
     },
   });
+
+  useEffect(() => {
+    if (instanceRef.current && instanceRef.current.update) {
+      setTimeout(() => {
+        instanceRef.current.update();
+      }, 100);
+    }
+  }, [i18n.language, instanceRef]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -112,6 +124,7 @@ const Clients = () => {
       ref={sectionRef}
       id='brands'
       className="relative py-20 bg-[var(--secondary-light)] overflow-hidden"
+      dir={isRTL ? 'rtl' : 'ltr'}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary-light)] to-white opacity-50"></div>
       
@@ -136,9 +149,12 @@ const Clients = () => {
           <div ref={sliderRef} className="keen-slider">
             {[...restaurantBrands, ...restaurantBrands, ...restaurantBrands].map((brand, index) => (
               <div
-                key={`${brand.id}-${index}`}
+                key={`${brand.id}-${index}-${i18n.language}`}
                 className="keen-slider__slide brand-slide"
-                style={{ minWidth: '200px', width: 'auto' }}
+                style={{ 
+                  minWidth: '220px', 
+                  width: 'auto'
+                }}
               >
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-gray-100 group">
                   <div className="relative overflow-hidden rounded-xl">
@@ -163,8 +179,8 @@ const Clients = () => {
             ))}
           </div>
           
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[var(--secondary-light)] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[var(--secondary-light)] to-transparent z-10 pointer-events-none"></div>
+          <div className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-0 bottom-0 w-32 bg-gradient-to-${isRTL ? 'l' : 'r'} from-[var(--secondary-light)] to-transparent z-10 pointer-events-none`}></div>
+          <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-0 bottom-0 w-32 bg-gradient-to-${isRTL ? 'r' : 'l'} from-[var(--secondary-light)] to-transparent z-10 pointer-events-none`}></div>
         </div>
 
         <div className={`text-center mt-16 transition-all duration-1000 delay-500 transform ${
@@ -188,13 +204,13 @@ const Clients = () => {
           display: flex !important;
           align-items: center;
           justify-content: center;
+          box-sizing: border-box;
         }
 
         .keen-slider__slide {
           overflow: visible !important;
         }
 
-        /* Custom scrollbar for touch devices */
         .keen-slider::-webkit-scrollbar {
           display: none;
         }
@@ -203,9 +219,17 @@ const Clients = () => {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
+
+        [dir="rtl"] .keen-slider {
+          direction: rtl;
+        }
+
+        [dir="ltr"] .keen-slider {
+          direction: ltr;
+        }
       `}</style>
     </section>
   );
 };
 
-export default Clients;    
+export default Clients;

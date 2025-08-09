@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import Card from './common/Card'
 import { Settings, Star } from 'lucide-react'
 import Image from 'next/image'
-import about from '../../public/images/ِAbout.png'
+import about from '../../public/images/About2.png'
 
 function About() {
     const { t, i18n } = useTranslation()
@@ -67,41 +67,25 @@ function About() {
                         </div>
                     </div>
 
-                    {/* Image Section */}
                     <div className={`relative ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>
                         <div className="relative">
-                            {/* Background Decorative Elements */}
-                            <div className="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-br from-[var(--primary)]/10 to-orange-500/10 rounded-full blur-xl"></div>
-                            <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-gradient-to-br from-orange-500/10 to-[var(--primary)]/10 rounded-full blur-xl"></div>
-                            
-                            {/* Main Image Container */}
-                            <div className="relative bg-white rounded-3xl shadow-2xl p-6 transform hover:scale-105 transition-transform duration-500">
-                                <div className="relative overflow-hidden rounded-2xl">
+                 
+                           
+                            <div className="w-full max-w-2xl mx-auto">
+                                <div className="relative overflow-hidden rounded-2xl h-96 md:h-[400px] lg:h-[400px]">
                                     <Image 
                                         src={about} 
                                         alt={t('about.subtitle')}
-                                        className="w-full h-auto object-cover"
+                                        className="w-full h-full object-cover"
                                         priority
                                     />
                                     
-                                    {/* Overlay Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                                 
-                                {/* Floating Badge */}
-                                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-[var(--primary)] to-orange-500 text-white px-4 py-2 rounded-full shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-300">
-                                    <span className="text-sm font-bold">#{t('about.title').split(' ')[0]}</span>
-                                </div>
+                            
                             </div>
 
-                            {/* Floating Elements */}
-                            <div className="absolute top-1/4 -left-6 bg-white rounded-full p-3 shadow-lg animate-bounce">
-                                <Star className="w-6 h-6 text-yellow-400 fill-current" />
-                            </div>
-                            
-                            <div className="absolute bottom-1/4 -right-6 bg-white rounded-full p-3 shadow-lg animate-pulse">
-                                <Settings className="w-6 h-6 text-[var(--primary)]" />
-                            </div>
+                 
                         </div>
                     </div>
                 </div>

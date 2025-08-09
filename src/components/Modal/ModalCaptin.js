@@ -6,12 +6,13 @@ import * as z from "zod"
 import toast from "react-hot-toast"
 import ErrorMessage from '../common/ErrorMessage'
 import { X } from 'lucide-react'
+import axios from 'axios'
 
 function Modal({ setIsOpen }) {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.language === 'ar';
     const [showOtherInput, setShowOtherInput] = useState(false);
-    
+
     const createContactSchema = (t) => z.object({
         fullName: z.string()
             .min(2, t('contactUs.validation.fullNameMin'))
@@ -32,8 +33,8 @@ function Modal({ setIsOpen }) {
         phoneType: z.string()
             .min(1, t('contactUs.validation.phoneTypeMin')),
     })
-    
-    const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
+
+    const { register, handleSubmit, formState: { errors, isSubmitting }, setValue, watch, reset } = useForm({
         resolver: zodResolver(createContactSchema(t))
     })
 
@@ -47,19 +48,43 @@ function Modal({ setIsOpen }) {
             setValue('otherVehicleType', '');
         }
     }, [watchedVehicleType, setValue]);
-    
+
     const onSubmit = async (data) => {
         if (data.vehicleType === 'Other' && data.otherVehicleType) {
             data.vehicleType = data.otherVehicleType;
         }
-        
-        console.log(data)
         try {
-            toast.success(t('modal.successMessage'), {
+            await axios.post('/api/register-captain', data).then(() => {
+                toast.success(t('modal.successMessage'), {
+                    duration: 4000,
+                    position: 'top-center',
+                    style: {
+                        background: 'var(--primary)',
+                        color: 'white',
+                        borderRadius: '25px',
+                        padding: '16px 24px',
+                        fontSize: '16px',
+                        fontWeight: '500',
+                        direction: isRTL ? 'rtl' : 'ltr',
+                        textAlign: isRTL ? 'right' : 'left'
+                    }
+                })
+                setIsOpen(false);
+                reset();
+            })
+
+
+
+        } catch (error) {
+            console.log('Registration error:', error);
+
+            // Better error handling
+            const errorMessage = error.response?.data?.error || t('modal.errorMessage');
+            toast.error(errorMessage, {
                 duration: 4000,
                 position: 'top-center',
                 style: {
-                    background: 'var(--primary)',
+                    background: '#ef4444',
                     color: 'white',
                     borderRadius: '25px',
                     padding: '16px 24px',
@@ -69,32 +94,22 @@ function Modal({ setIsOpen }) {
                     textAlign: isRTL ? 'right' : 'left'
                 }
             })
-        } catch (error) {
-            console.log(error)
-            toast.error(t('modal.errorMessage'), {
-                duration: 4000,
-                position: 'top-center',
-                style: {
-                    background: 'var(--primary)',
-                    color: 'white',
-                }
-            })
         }
     }
-    
+
     const handleClose = () => {
         setIsOpen(false);
     }
-    
+
     const handleBackdropClick = (e) => {
         if (e.target === e.currentTarget) {
             handleClose();
         }
     }
-    
+
     return (
         <>
-            <div 
+            <div
                 className='fixed inset-0 bg-[var(--secondary-light)] bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn'
                 onClick={handleBackdropClick}
             >
@@ -107,7 +122,7 @@ function Modal({ setIsOpen }) {
                     >
                         <X size={20} />
                     </button>
-                    
+
                     <div className='bg-gradient-to-r from-[var(--primary)] to-red-600 p-6 rounded-t-3xl text-center'>
                         <h1 className='text-2xl font-bold text-[var(--text-heading)] mb-2'>{t('modal.title')}</h1>
                     </div>
@@ -115,13 +130,13 @@ function Modal({ setIsOpen }) {
                     <form className='p-6 space-y-5' onSubmit={handleSubmit(onSubmit)}>
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                Full Name
+                                {t('modalCaptin.name')}
                             </label>
                             <input
                                 {...register('fullName')}
                                 name='fullName'
                                 type="text"
-                                placeholder="Enter your full name"
+                                placeholder={t('modalCaptin.namePlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             />
                             {errors.fullName && <ErrorMessage errorMessage={errors.fullName.message} />}
@@ -129,18 +144,18 @@ function Modal({ setIsOpen }) {
 
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                Type of Vehicle
+                                {t('modalCaptin.vehicleType')}
                             </label>
                             <select
                                 {...register('vehicleType')}
                                 name='vehicleType'
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             >
-                                <option value="">Select vehicle type</option>
-                                <option value="Scooter">Scooter</option>
-                                <option value="Economical Car">Economical Car</option>
-                                <option value="Electric Car">Electric Car</option>
-                                <option value="Other">Other</option>
+                                <option value="">{t('modalCaptin.vehicleTypePlaceholder')}</option>
+                                <option value="Scooter">{t('modalCaptin.scooter')}</option>
+                                <option value="Economical Car">{t('modalCaptin.economicalCar')}</option>
+                                <option value="Electric Car">{t('modalCaptin.electricCar')}</option>
+                                <option value="Other">{t('modalCaptin.other')}</option>
                             </select>
                             {errors.vehicleType && <ErrorMessage errorMessage={errors.vehicleType.message} />}
                         </div>
@@ -148,13 +163,13 @@ function Modal({ setIsOpen }) {
                         {showOtherInput && (
                             <div className='space-y-2'>
                                 <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                    Specify Other Vehicle Type
+                                    {t('modalCaptin.otherVehicleType')}
                                 </label>
                                 <input
                                     {...register('otherVehicleType')}
                                     name='otherVehicleType'
                                     type="text"
-                                    placeholder="Enter your vehicle type"
+                                    placeholder={t('modalCaptin.otherVehicleTypePlaceholder')}
                                     className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                                 />
                                 {errors.otherVehicleType && <ErrorMessage errorMessage={errors.otherVehicleType.message} />}
@@ -163,13 +178,13 @@ function Modal({ setIsOpen }) {
 
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                Vehicle Model
+                                {t('modalCaptin.vehicleModel')}
                             </label>
                             <input
                                 {...register('vehicleModel')}
                                 name='vehicleModel'
                                 type="text"
-                                placeholder="Enter vehicle model"
+                                placeholder={t('modalCaptin.vehicleModelPlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             />
                             {errors.vehicleModel && <ErrorMessage errorMessage={errors.vehicleModel.message} />}
@@ -177,13 +192,13 @@ function Modal({ setIsOpen }) {
 
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                Phone Number
+                                {t('modalCaptin.phone')}
                             </label>
                             <input
                                 {...register('phone')}
                                 name='phone'
                                 type="tel"
-                                placeholder="Enter your phone number"
+                                placeholder={t('modalCaptin.phonePlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             />
                             {errors.phone && <ErrorMessage errorMessage={errors.phone.message} />}
@@ -191,13 +206,13 @@ function Modal({ setIsOpen }) {
 
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                Address
+                                {t('modalCaptin.address')}
                             </label>
                             <textarea
                                 {...register('address')}
                                 name='address'
                                 rows="3"
-                                placeholder="Enter your address"
+                                placeholder={t('modalCaptin.addressPlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out resize-none ${isRTL ? 'text-right' : 'text-left'}`}
                             />
                             {errors.address && <ErrorMessage errorMessage={errors.address.message} />}
@@ -205,16 +220,16 @@ function Modal({ setIsOpen }) {
 
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                Phone Type
+                                {t('modalCaptin.phoneType')}
                             </label>
                             <select
                                 {...register('phoneType')}
                                 name='phoneType'
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             >
-                                <option value="">Select phone type</option>
-                                <option value="iOS">iOS</option>
-                                <option value="Android">Android</option>
+                                <option value="">{t('modalCaptin.phoneTypePlaceholder')}</option>
+                                <option value="iOS">{t('modalCaptin.ios')}</option>
+                                <option value="Android">{t('modalCaptin.android')}</option>
                             </select>
                             {errors.phoneType && <ErrorMessage errorMessage={errors.phoneType.message} />}
                         </div>
@@ -222,9 +237,17 @@ function Modal({ setIsOpen }) {
                         <div className='pt-4'>
                             <button
                                 type="submit"
-                                className='w-full bg-gradient-to-r from-[var(--primary)] to-red-600 text-[var(--text-heading)] py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-in-out hover:from-red-600 hover:to-[var(--primary)]'
+                                disabled={isSubmitting}
+                                className='w-full bg-gradient-to-r from-[var(--primary)] to-red-600 text-[var(--text-heading)] py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-in-out hover:from-red-600 hover:to-[var(--primary)] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none'
                             >
-                                {t('modal.submit')}
+                                {isSubmitting ? (
+                                    <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse' : ''} space-x-2`}>
+                                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                                        <span>{t('modal.submitting')}</span>
+                                    </div>
+                                ) : (
+                                    t('modal.submit')
+                                )}
                             </button>
                         </div>
                     </form>

@@ -30,6 +30,17 @@ export default function Footer() {
     setEmail('')
   }
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offsetTop = element.offsetTop - 80
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <footer className={`relative bg-primary-gradient text-white mt-24 pt-36 overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}>
       <Image
@@ -52,9 +63,8 @@ export default function Footer() {
       />
       
       <div className="relative z-10">
-        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-28">
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-36">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Contact Information */}
             <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
               <h4 className="text-white text-lg font-semibold mb-4">
                 {t('footer.address')}
@@ -74,7 +84,6 @@ export default function Footer() {
                 </div>
               </div>
               
-              {/* Social Media Links */}
               <div className={`flex gap-2 pt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <Link
                   href="#"
@@ -107,95 +116,92 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Quick Links */}
             <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
               <h4 className="text-white text-lg font-semibold mb-4">
                 {t('footer.quickLinks')}
               </h4>
               <div className="space-y-3">
-                <Link
-                  href="/about"
+                <button
+                  onClick={() => scrollToSection('about')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
                   <span>{t('footer.aboutUs')}</span>
-                </Link>
-                <Link
-                  href="/contact"
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
                   <span>{t('footer.contactUs')}</span>
-                </Link>
-                <Link
-                  href="/privacy"
+                </button>
+                <button
+                  onClick={() => scrollToSection('feature')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
-                  <span>{t('footer.privacyPolicy')}</span>
-                </Link>
-                <Link
-                  href="/terms"
+                  <span>{t('navigation.feature')}</span>
+                </button>
+                <button
+                  onClick={() => scrollToSection('brands')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
-                  <span>{t('footer.termsConditions')}</span>
-                </Link>
-                <Link
-                  href="/careers"
+                  <span>{t('navigation.pricing')}</span>
+                </button>
+                <button
+                  onClick={() => scrollToSection('review')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
-                  <span>{t('footer.career')}</span>
-                </Link>
+                  <span>{t('navigation.review')}</span>
+                </button>
               </div>
             </div>
 
-            {/* Popular Links */}
             <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
               <h4 className="text-white text-lg font-semibold mb-4">
                 {t('footer.popularLinks')}
               </h4>
               <div className="space-y-3">
-                <Link
-                  href="/about"
+                <button
+                  onClick={() => scrollToSection('home')}
+                  className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
+                >
+                  <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
+                  <span>{t('navigation.home')}</span>
+                </button>
+                <button
+                  onClick={() => scrollToSection('about')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
                   <span>{t('footer.aboutUs')}</span>
-                </Link>
-                <Link
-                  href="/contact"
+                </button>
+                <button
+                  onClick={() => scrollToSection('feature')}
+                  className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
+                >
+                  <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
+                  <span>{t('navigation.feature')}</span>
+                </button>
+                <button
+                  onClick={() => scrollToSection('brands')}
+                  className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
+                >
+                  <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
+                  <span>{t('navigation.pricing')}</span>
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
                   <span>{t('footer.contactUs')}</span>
-                </Link>
-                <Link
-                  href="/privacy"
-                  className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
-                >
-                  <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
-                  <span>{t('footer.privacyPolicy')}</span>
-                </Link>
-                <Link
-                  href="/terms"
-                  className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
-                >
-                  <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
-                  <span>{t('footer.termsConditions')}</span>
-                </Link>
-                <Link
-                  href="/careers"
-                  className={`flex items-center text-white/90 hover:text-white hover:tracking-wide transition-all duration-300 group ${isRTL ? 'flex-row-reverse' : ''}`}
-                >
-                  <ChevronRight className={`w-3 h-3 text-sm transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? 'ml-3 rotate-180' : 'mr-3'}`} />
-                  <span>{t('footer.career')}</span>
-                </Link>
+                </button>
               </div>
             </div>
 
-            {/* Newsletter */}
             <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
               <h4 className="text-white text-lg font-semibold mb-4">
                 {t('footer.newsletter')}
@@ -208,7 +214,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Footer */}
         <div className="border-t border-white/20">
           <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-6">
             <div className={`flex flex-col md:flex-row ${
@@ -216,56 +221,16 @@ export default function Footer() {
             } justify-between items-center gap-4`}>
               <div className={`text-sm text-white/90 ${isRTL ? 'text-right' : 'text-left'}`}>
                 &copy;{' '}
-                <Link 
-                  href="/" 
+                <button 
+                  onClick={() => scrollToSection('home')}
                   className="border-b border-white/30 hover:border-white transition-colors"
                 >
                   {t('footer.siteName')}
-                </Link>
-                , {t('footer.allRightsReserved')}
-                <br />
-                {t('footer.designedBy')}{' '}
-                <Link 
-                  href="https://htmlcodex.com" 
-                  className="border-b border-white/30 hover:border-white transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  HTML Codex
-                </Link>
+                </button>
+                , {t('footer.allRightsReserved')} {" "} {t('footer.designedBy')}{' '}
+        
               </div>
-              <div className={`flex gap-6 text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Link 
-                  href="/" 
-                  className={`text-white/90 hover:text-white transition-colors ${
-                    isRTL ? 'border-l border-white/20 pl-6' : 'border-r border-white/20 pr-6'
-                  }`}
-                >
-                  {t('footer.home')}
-                </Link>
-                <Link 
-                  href="/cookies" 
-                  className={`text-white/90 hover:text-white transition-colors ${
-                    isRTL ? 'border-l border-white/20 pl-6' : 'border-r border-white/20 pr-6'
-                  }`}
-                >
-                  {t('footer.cookies')}
-                </Link>
-                <Link 
-                  href="/help" 
-                  className={`text-white/90 hover:text-white transition-colors ${
-                    isRTL ? 'border-l border-white/20 pl-6' : 'border-r border-white/20 pr-6'
-                  }`}
-                >
-                  {t('footer.help')}
-                </Link>
-                <Link 
-                  href="/faqs" 
-                  className="text-white/90 hover:text-white transition-colors"
-                >
-                  {t('footer.faqs')}
-                </Link>
-              </div>
+       
             </div>
           </div>
         </div>
