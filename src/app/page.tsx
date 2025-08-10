@@ -43,14 +43,12 @@ export default function Home() {
       <Navigation />
       <HeroSection scrollToContact={scrollToContact}/>
       <About />
-      <EasySteps />
-      
+      <EasySteps /> 
       <RegisterResturant />
       <RegisterCaptin />
       <Clients />
       <DownloadApp />
       <ContactUs contactRef={contactRef}/>
-
       <Footer/>
     </div>
   );
