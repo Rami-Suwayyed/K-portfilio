@@ -14,6 +14,7 @@ function DownloadApp() {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.language === 'ar';
     return (
+        
         <section id="downloadApp" className="py-20 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">

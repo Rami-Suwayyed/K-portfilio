@@ -11,39 +11,51 @@ const Clients = () => {
   const restaurantBrands = [
     {
       id: 1,
-      name: "Firefly",
-      logo: "https://fireflyburgers.com/wp-content/uploads/2023/09/logo-1.png",
-      alt: "Firefly"
+      name: { en: "Al Thawaq", ar: "الذواق" },
+      logo: "/images/partners/Al-Thawaq.jpg",
+      alt: "Al Thawaq"
     },
     {
       id: 2,
-      name: "99 Grill",
-      logo: "https://99-grill.com/Content/WebEn/img/logo.png",
-      alt: "99 Grill"
+      name: { en: "Army Burger", ar: "ارمي برجر" },
+      logo: "/images/partners/Army-Burger.jpg",
+      alt: "Army Burger"
     },
     {
       id: 3,
-      name: "Tazaj",
-      logo: "https://tazaj.jo/wp-content/uploads/2021/03/tazaj-logo-e1614772997860.png",
-      alt: "Tazaj"
+      name: { en: "Deek Al Tazaj", ar: "ديك الطازج" },
+      logo: "/images/partners/Deek.jpg",
+      alt: "Deek"
     },
     {
       id: 4,
-      name: "Burger Makers",
-      logo: "https://burgermakers.com/images/logo-part3.png",
-      alt: "Burger Makers"
+      name: { en: "Farooj Abu Al-Abed", ar: "فروج ابو العبد" },
+      logo: "/images/partners/Abu-Al-Abed.jpg",
+      alt: "Farooj Abu Al-Abed"
     },
     {
       id: 5,
-      name: "Hakuna Matata",
-      logo: "https://hakunamatatajo.com/uploads/foodlz05c263bf-304d-438d-82ef-5d33a3c1e057/logo/logo1618244904.png",
-      alt: "Hakuna Matata"
+      name: { en: "Salwa & Fairuz", ar: "سلوى وفيروز" },
+      logo: "/images/partners/Salwa-Fairuz.jpg",
+      alt: "Salwa & Fairuz"
     },
     {
       id: 6,
-      name: "Al Mousalli",
-      logo: "https://www.almousalli.com/themes/fuji/assets/images/lightlogo.png",
-      alt: "Al Mousalli"
+      name: { en: "Chef Eyad", ar: "شيف اياد" },
+      logo: "/images/partners/Chef-Eyad.jpg",
+      alt: "Chef Eyad"
+    },
+    {
+      id: 7,
+      name: { en: "Al-Hanini Restaurant", ar: "مطعم الهنيني" },
+      logo: "/images/partners/Al-Hanini-Restaurant.jpg",
+      alt: "Al-Hanini Restaurant"
+    },
+    {
+      id: 8,
+      name: { en: "Almond Coffee House", ar: "الماند كوفي هاوس" },
+      logo: "/images/partners/Almond-Coffee-House.jpg",
+      alt: "Almond Coffee House"
     }
   ];
 
@@ -172,7 +184,7 @@ const Clients = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)] to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </div>
                   <h3 className="text-center mt-4 text-[var(--text-body)] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {brand.name}
+                    {brand.name[i18n.language] || brand.name.en}
                   </h3>
                 </div>
               </div>

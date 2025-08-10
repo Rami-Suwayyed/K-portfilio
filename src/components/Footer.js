@@ -70,21 +70,21 @@ export default function Footer() {
                 {t('footer.address')}
               </h4>
               <div className="space-y-3 text-white/90">
-                <div className={`flex items-start ${isRTL ? 'flex-row-reverse' : ''} gap-3`}>
+                <div className={`flex items-start gap-3`}>
                   <MapPin className="w-4 h-4 text-white mt-1 flex-shrink-0" />
                   <span className="leading-relaxed">{t('footer.addressText')}</span>
                 </div>
-                <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} gap-3`}>
-                  <Phone className="w-4 h-4 text-white flex-shrink-0" />
+                <div className={`flex items-center  gap-3`}>
+                  <Phone className={`w-4 h-4 text-white flex-shrink-0 ${isRTL ? 'flex-row-reverse' : ''}`} />
                   <span dir="ltr">+012 345 67890</span>
                 </div>
-                <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''} gap-3`}>
+                <div className={`flex items-center gap-3`}>
                   <Mail className="w-4 h-4 text-white flex-shrink-0" />
                   <span dir="ltr">info@example.com</span>
                 </div>
               </div>
               
-              <div className={`flex gap-2 pt-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <div className={`flex gap-2 pt-4 `}>
                 <Link
                   href="#"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
