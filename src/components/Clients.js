@@ -123,7 +123,7 @@ const Clients = () => {
     <section 
       ref={sectionRef}
       id='brands'
-      className="relative py-20 bg-[var(--secondary-light)] overflow-hidden"
+      className="relative py-20  overflow-hidden"
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary-light)] to-white opacity-50"></div>

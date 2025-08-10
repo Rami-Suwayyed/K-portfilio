@@ -48,10 +48,11 @@ export default function Home() {
       <HeroSection scrollToContact={scrollToContact}/>
       <About />
       <EasySteps />
-      <DownloadApp />
+      
       <RegisterResturant />
       <RegisterCaptin />
       <Clients />
+      <DownloadApp />
       <ContactUs contactRef={contactRef}/>
 
       <Footer/>

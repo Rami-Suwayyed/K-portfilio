@@ -15,7 +15,7 @@ function RegisterCaptin() {
     return (
         <>
             {isOpen && <Modal setIsOpen={setIsOpen} />}
-            <section className="py-16 lg:py-24 bg-[var(--background-default)] overflow-hidden">
+            <section className="py-16 lg:py-24  overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
                         <div className="flex-1 max-w-2xl lg:max-w-none">

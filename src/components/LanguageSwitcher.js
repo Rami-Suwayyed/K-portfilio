@@ -27,7 +27,7 @@ export default function LanguageSwitcher() {
       {currentLocale === 'en' ? (
         <button
           onClick={() => switchLanguage('ar')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-md transform hover:scale-105 ${
+          className={`px-3 py-1 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 hover:shadow-md transform hover:scale-105 ${
             isSticky 
               ? 'text-gray-700 hover:text-[var(--primary)] hover:bg-gray-100' 
               : 'text-white hover:text-[var(--text-link-hover)] hover:bg-[var(--secondary-light)]'
@@ -41,7 +41,7 @@ export default function LanguageSwitcher() {
       ) : (
         <button
           onClick={() => switchLanguage('en')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-md transform hover:scale-105 ${
+          className={`px-3 py-1 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-300 hover:shadow-md transform hover:scale-105 ${
             isSticky 
               ? 'text-gray-700 hover:text-[var(--primary)] hover:bg-gray-100' 
               : 'text-white hover:text-[var(--text-link-hover)] hover:bg-[var(--secondary-light)]'

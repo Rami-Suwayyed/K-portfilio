@@ -12,6 +12,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'كبسه - Kabsa Food Ordering',
   description: 'Authentic Middle Eastern cuisine delivery',
+  icons: {
+    icon: '/images/Logo.webp',
+    shortcut: '/images/Logo.webp',
+    apple: '/images/Logo.webp',
+  },
 }
 
 export default function RootLayout({
@@ -22,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} font-montserrat`}>
-        {children}
+        <TranslationProvider>
+          {children}
+        </TranslationProvider>
       </body>
     </html>
   )

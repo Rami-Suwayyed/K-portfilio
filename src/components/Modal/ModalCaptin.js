@@ -1,90 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
+import { useForm, ValidationError } from '@formspree/react'
 import toast from "react-hot-toast"
-import ErrorMessage from '../common/ErrorMessage'
 import { X } from 'lucide-react'
-import axios from 'axios'
 
 function Modal({ setIsOpen }) {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.language === 'ar';
     const [showOtherInput, setShowOtherInput] = useState(false);
+    const [state, handleSubmit] = useForm('xgvzrvzq');
+    const formRef = useRef(null);
 
-    const createContactSchema = (t) => z.object({
-        fullName: z.string()
-            .min(2, t('contactUs.validation.fullNameMin'))
-            .max(50, t('contactUs.validation.fullNameMax')),
-        vehicleType: z.string()
-            .min(1, t('contactUs.validation.vehicleTypeMin'))
-            .max(50, t('contactUs.validation.vehicleTypeMax')),
-        otherVehicleType: z.string().optional(),
-        vehicleModel: z.string()
-            .min(2, t('contactUs.validation.vehicleModelMin'))
-            .max(50, t('contactUs.validation.vehicleModelMax')),
-        phone: z.string()
-            .min(10, t('contactUs.validation.phoneMin'))
-            .max(15, t('contactUs.validation.phoneMax')),
-        address: z.string()
-            .min(10, t('contactUs.validation.addressMin'))
-            .max(200, t('contactUs.validation.addressMax')),
-        phoneType: z.string()
-            .min(1, t('contactUs.validation.phoneTypeMin')),
-    })
-
-    const { register, handleSubmit, formState: { errors, isSubmitting }, setValue, watch, reset } = useForm({
-        resolver: zodResolver(createContactSchema(t))
-    })
-
-    const watchedVehicleType = watch('vehicleType');
-
-    React.useEffect(() => {
-        if (watchedVehicleType === 'Other') {
-            setShowOtherInput(true);
-        } else {
-            setShowOtherInput(false);
-            setValue('otherVehicleType', '');
-        }
-    }, [watchedVehicleType, setValue]);
-
-    const onSubmit = async (data) => {
-        if (data.vehicleType === 'Other' && data.otherVehicleType) {
-            data.vehicleType = data.otherVehicleType;
-        }
-        try {
-            await axios.post('/api/register-captain', data).then(() => {
-                toast.success(t('modal.successMessage'), {
-                    duration: 4000,
-                    position: 'top-center',
-                    style: {
-                        background: 'var(--primary)',
-                        color: 'white',
-                        borderRadius: '25px',
-                        padding: '16px 24px',
-                        fontSize: '16px',
-                        fontWeight: '500',
-                        direction: isRTL ? 'rtl' : 'ltr',
-                        textAlign: isRTL ? 'right' : 'left'
-                    }
-                })
-                setIsOpen(false);
-                reset();
-            })
-
-
-
-        } catch (error) {
-            console.log('Registration error:', error);
-
-            // Better error handling
-            const errorMessage = error.response?.data?.error || t('modal.errorMessage');
-            toast.error(errorMessage, {
+    useEffect(() => {
+        if (state.succeeded) {
+            toast.success(t('modal.successMessage'), {
                 duration: 4000,
                 position: 'top-center',
                 style: {
-                    background: '#ef4444',
+                    background: 'var(--primary)',
                     color: 'white',
                     borderRadius: '25px',
                     padding: '16px 24px',
@@ -93,9 +26,21 @@ function Modal({ setIsOpen }) {
                     direction: isRTL ? 'rtl' : 'ltr',
                     textAlign: isRTL ? 'right' : 'left'
                 }
-            })
+            });
+            setIsOpen(false);
+            if (formRef.current) {
+                formRef.current.reset();
+            }
         }
-    }
+    }, [state.succeeded, t, isRTL, setIsOpen]);
+
+    const handleVehicleTypeChange = (e) => {
+        if (e.target.value === 'Other') {
+            setShowOtherInput(true);
+        } else {
+            setShowOtherInput(false);
+        }
+    };
 
     const handleClose = () => {
         setIsOpen(false);
@@ -127,19 +72,23 @@ function Modal({ setIsOpen }) {
                         <h1 className='text-2xl font-bold text-[var(--text-heading)] mb-2'>{t('modal.title')}</h1>
                     </div>
 
-                    <form className='p-6 space-y-5' onSubmit={handleSubmit(onSubmit)}>
+                    <form ref={formRef} className='p-6 space-y-5' onSubmit={handleSubmit}>
                         <div className='space-y-2'>
                             <label className={`block text-sm font-semibold text-[var(--secondary-dark)] mb-1 ${isRTL ? 'text-right' : 'text-left'}`}>
                                 {t('modalCaptin.name')}
                             </label>
                             <input
-                                {...register('fullName')}
                                 name='fullName'
                                 type="text"
+                                required
                                 placeholder={t('modalCaptin.namePlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             />
-                            {errors.fullName && <ErrorMessage errorMessage={errors.fullName.message} />}
+                            <ValidationError 
+                                prefix="Full Name" 
+                                field="fullName"
+                                errors={state.errors}
+                            />
                         </div>
 
                         <div className='space-y-2'>
@@ -147,8 +96,9 @@ function Modal({ setIsOpen }) {
                                 {t('modalCaptin.vehicleType')}
                             </label>
                             <select
-                                {...register('vehicleType')}
                                 name='vehicleType'
+                                required
+                                onChange={handleVehicleTypeChange}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             >
                                 <option value="">{t('modalCaptin.vehicleTypePlaceholder')}</option>
@@ -157,7 +107,11 @@ function Modal({ setIsOpen }) {
                                 <option value="Electric Car">{t('modalCaptin.electricCar')}</option>
                                 <option value="Other">{t('modalCaptin.other')}</option>
                             </select>
-                            {errors.vehicleType && <ErrorMessage errorMessage={errors.vehicleType.message} />}
+                            <ValidationError 
+                                prefix="Vehicle Type" 
+                                field="vehicleType"
+                                errors={state.errors}
+                            />
                         </div>
 
                         {showOtherInput && (
@@ -166,13 +120,16 @@ function Modal({ setIsOpen }) {
                                     {t('modalCaptin.otherVehicleType')}
                                 </label>
                                 <input
-                                    {...register('otherVehicleType')}
                                     name='otherVehicleType'
                                     type="text"
                                     placeholder={t('modalCaptin.otherVehicleTypePlaceholder')}
                                     className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                                 />
-                                {errors.otherVehicleType && <ErrorMessage errorMessage={errors.otherVehicleType.message} />}
+                                <ValidationError 
+                                    prefix="Other Vehicle Type" 
+                                    field="otherVehicleType"
+                                    errors={state.errors}
+                                />
                             </div>
                         )}
 
@@ -181,13 +138,17 @@ function Modal({ setIsOpen }) {
                                 {t('modalCaptin.vehicleModel')}
                             </label>
                             <input
-                                {...register('vehicleModel')}
                                 name='vehicleModel'
                                 type="text"
+                                required
                                 placeholder={t('modalCaptin.vehicleModelPlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             />
-                            {errors.vehicleModel && <ErrorMessage errorMessage={errors.vehicleModel.message} />}
+                            <ValidationError 
+                                prefix="Vehicle Model" 
+                                field="vehicleModel"
+                                errors={state.errors}
+                            />
                         </div>
 
                         <div className='space-y-2'>
@@ -195,13 +156,17 @@ function Modal({ setIsOpen }) {
                                 {t('modalCaptin.phone')}
                             </label>
                             <input
-                                {...register('phone')}
                                 name='phone'
                                 type="tel"
+                                required
                                 placeholder={t('modalCaptin.phonePlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             />
-                            {errors.phone && <ErrorMessage errorMessage={errors.phone.message} />}
+                            <ValidationError 
+                                prefix="Phone" 
+                                field="phone"
+                                errors={state.errors}
+                            />
                         </div>
 
                         <div className='space-y-2'>
@@ -209,13 +174,17 @@ function Modal({ setIsOpen }) {
                                 {t('modalCaptin.address')}
                             </label>
                             <textarea
-                                {...register('address')}
                                 name='address'
                                 rows="3"
+                                required
                                 placeholder={t('modalCaptin.addressPlaceholder')}
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] placeholder-gray-400 focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out resize-none ${isRTL ? 'text-right' : 'text-left'}`}
                             />
-                            {errors.address && <ErrorMessage errorMessage={errors.address.message} />}
+                            <ValidationError 
+                                prefix="Address" 
+                                field="address"
+                                errors={state.errors}
+                            />
                         </div>
 
                         <div className='space-y-2'>
@@ -223,24 +192,28 @@ function Modal({ setIsOpen }) {
                                 {t('modalCaptin.phoneType')}
                             </label>
                             <select
-                                {...register('phoneType')}
                                 name='phoneType'
+                                required
                                 className={`w-full px-4 py-3 bg-[var(--secondary-light)] border-2 border-transparent rounded-2xl text-[var(--secondary-dark)] focus:border-[var(--primary)] focus:bg-white focus:outline-none transition-all duration-200 ease-in-out ${isRTL ? 'text-right' : 'text-left'}`}
                             >
                                 <option value="">{t('modalCaptin.phoneTypePlaceholder')}</option>
                                 <option value="iOS">{t('modalCaptin.ios')}</option>
                                 <option value="Android">{t('modalCaptin.android')}</option>
                             </select>
-                            {errors.phoneType && <ErrorMessage errorMessage={errors.phoneType.message} />}
+                            <ValidationError 
+                                prefix="Phone Type" 
+                                field="phoneType"
+                                errors={state.errors}
+                            />
                         </div>
 
                         <div className='pt-4'>
                             <button
                                 type="submit"
-                                disabled={isSubmitting}
+                                disabled={state.submitting}
                                 className='w-full bg-gradient-to-r from-[var(--primary)] to-red-600 text-[var(--text-heading)] py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 ease-in-out hover:from-red-600 hover:to-[var(--primary)] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none'
                             >
-                                {isSubmitting ? (
+                                {state.submitting ? (
                                     <div className={`flex items-center justify-center ${isRTL ? 'space-x-reverse' : ''} space-x-2`}>
                                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                                         <span>{t('modal.submitting')}</span>

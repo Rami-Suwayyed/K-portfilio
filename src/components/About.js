@@ -11,7 +11,7 @@ function About() {
 
     return (
         <section 
-            className="py-20 bg-gradient-to-br from-[var(--background-default)] via-white to-[var(--secondary-light)] mt-10"
+            className="py-20  mt-10"
             dir={isRTL ? 'rtl' : 'ltr'}
             id='about'
         >

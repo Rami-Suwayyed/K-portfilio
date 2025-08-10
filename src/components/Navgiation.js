@@ -87,7 +87,6 @@ export default function Navigation() {
         <div className={`flex items-center justify-between transition-all duration-500 ${
           isSticky ? 'h-16' : 'h-20'
         }`}>
-          {/* Logo */}
           <Link 
             href="/" 
             className={`text-2xl font-bold transition-all duration-500 ${
@@ -129,35 +128,31 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Desktop CTA & Language Switcher */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             <LanguageSwitcher />
-            <button className="btn-primary-gradient px-6 py-2 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300">
+            <button className="hidden md:block btn-primary-gradient px-4 md:px-6 py-2 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300 text-sm md:text-base">
               {t('buttons.startFreeTrial') || 'Start Free Trial'}
             </button>
+            <button
+              className="lg:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary ml-2"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
+                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0' : ''
+                } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
+                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
+              </div>
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-              } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
-              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
-              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-              } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
-            </div>
-          </button>
         </div>
 
-        {/* Mobile Menu */}
         <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
@@ -174,8 +169,7 @@ export default function Navigation() {
               </button>
             ))}
             <div className="px-4 py-2 border-t border-gray-200 mt-4 pt-4">
-              <LanguageSwitcher />
-              <button className="btn-primary-gradient w-full px-6 py-3 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300 mt-4">
+              <button className="btn-primary-gradient w-full px-6 py-3 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300">
                 {t('buttons.startFreeTrial') || 'Order Now'}
               </button>
             </div>
