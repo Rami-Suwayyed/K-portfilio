@@ -39,7 +39,7 @@ function About() {
                         <div className="grid sm:grid-cols-2 gap-6">
                             <Card 
                                 icon={Settings} 
-                                counts="1000+" 
+                                counts="50000+" 
                                 description={t('about.activeInstall')}
                                 isRTL={isRTL}
                             />
@@ -50,7 +50,7 @@ function About() {
                                 isRTL={isRTL}
                             />
                         </div>
-                        <div className="pt-6">
+                        {/* <div className="pt-6">
                             <button className="group bg-gradient-to-r from-[var(--primary)] to-orange-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
                                 <span className="flex items-center gap-3">
                                     {t('buttons.startFreeTrial')}
@@ -64,7 +64,7 @@ function About() {
                                     </div>
                                 </span>
                             </button>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className={`relative ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>

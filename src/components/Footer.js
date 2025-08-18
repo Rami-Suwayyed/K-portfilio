@@ -76,38 +76,38 @@ export default function Footer() {
                 </div>
                 <div className={`flex items-center  gap-3`}>
                   <Phone className={`w-4 h-4 text-white flex-shrink-0 ${isRTL ? 'flex-row-reverse' : ''}`} />
-                  <span dir="ltr">+012 345 67890</span>
+                  <span dir="ltr">+0962 79 0311 101</span>
                 </div>
                 <div className={`flex items-center gap-3`}>
                   <Mail className="w-4 h-4 text-white flex-shrink-0" />
-                  <span dir="ltr">info@example.com</span>
+                  <span dir="ltr">info@kabseh.com</span>
                 </div>
               </div>
               
               <div className={`flex gap-2 pt-4 `}>
                 <Link
-                  href="#"
+                  href="https://x.com/kabsehjo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.twitter')}
                 >
                   <Twitter className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.facebook.com/kabsehjo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.facebook')}
                 >
                   <Facebook className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/kabsehjo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.instagram')}
                 >
                   <Instagram className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.linkedin.com/company/kabseh-jo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.linkedin')}
                 >

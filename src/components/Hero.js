@@ -80,9 +80,9 @@ export default function HeroSection({scrollToContact}) {
               </p>
 
               <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'}`}>
-                <button className="btn-primary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300 slideInLeft">
+                {/* <button className="btn-primary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300 slideInLeft">
                   {t('buttons.readMore')}
-                </button>
+                </button> */}
                 <button onClick={scrollToContact} className="btn-secondary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300 slideInRight">
                   {t('buttons.contactUs')}
                 </button>

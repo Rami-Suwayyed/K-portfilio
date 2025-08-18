@@ -88,7 +88,7 @@ export default function Navigation() {
           isSticky ? 'h-16' : 'h-20'
         }`}>
           <Link 
-            href="/" 
+            href="/downloadApp" 
             className={`text-2xl font-bold transition-all duration-500 ${
               isSticky 
                 ? 'text-primary-gradient' 
