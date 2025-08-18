@@ -21,11 +21,13 @@ export default function HeroSection({scrollToContact}) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const isRTL = i18n.language === 'ar'
 
-  const screenshots = isRTL ? [
+  const screenshots = 
+  isRTL ? [
     screenshot1_ar,
     screenshot2_ar,
     screenshot3_ar,
-    screenshot4_ar] : [
+    screenshot4_ar
+  ] : [
     screenshot1_en,
     screenshot2_en,
     screenshot3_en,

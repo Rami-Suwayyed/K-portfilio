@@ -1,6 +1,10 @@
 {
   "welcome": "Welcome",
   "hello": "Hello {{name}}",
+    "metadata": {
+    "title": "كبسه - Kabsa Food Ordering",
+    "description": "The best food delivery app  .أفضل تطبيق لتوصيل الطعام"
+  },
   "navigation": {
     "home": "Home",
     "about": "About",

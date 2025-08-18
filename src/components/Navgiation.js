@@ -7,7 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher'
 import Image from 'next/image'
 import logo from '../../public/images/Kabseh-Logo-white (1).png'
 import logoOrange from '../../public/images/Kabseh-LogoText.png'
-
+import favicon from '../../public/images/101-1731465857-250.ico'
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
