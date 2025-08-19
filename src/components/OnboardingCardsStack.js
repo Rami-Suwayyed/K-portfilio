@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import aboutOne from '../../public/images/screenshot1-en.jpeg'
-import aboutTwo from '../../public/images/screenshot2-en.jpeg'
-import aboutThree from '../../public/images/screenshot3-en.jpeg'
+import aboutOne from '../../public/images/92.png'
+import aboutTwo from '../../public/images/93.png'
+import aboutThree from '../../public/images/94.png'
 
 function OnboardingCardsStack() {
     return (

@@ -1,6 +1,11 @@
 {
   "welcome": "مرحباً",
   "hello": "أهلاً {{name}}",
+  "email": "البريد الإلكتروني",
+  "email.company": "info@kabseeh.com",
+  "email.support": "info@kabseeh.com",
+  "phone": "الهاتف",
+  "phone.support": "+962 790 311 101",
   "metadata": {
     "title": "كبسه - Kabsa Food Ordering",
     "description": "The best food delivery app  .أفضل تطبيق لتوصيل الطعام"
@@ -11,6 +16,8 @@
     "menu": "القائمة",
     "feature": "المميزات",
     "pricing": "الأسعار",
+    "brands": "العلامات التجارية",
+    "partners": "الشركاء",
     "review": "التقييمات",
     "contact": "اتصل بنا",
     "downloadApp": "تحميل التطبيق"
@@ -56,7 +63,44 @@
       "title": "تتبع فوري",
       "description": "تتبع طلبك من المطبخ إلى باب منزلك مع تحديثات مباشرة وأوقات التسليم المتوقعة."
     }
-  },
+    },
+     "downloadApp": {
+      "title": "تحميل التطبيق",
+      "description": "احصل على تطبيق كبسة الآن واستمتع بتجربة طلب الطعام بسهولة ويسر.",
+      "subtitle": "تطبيق كبسة هو الحل الأمثل لتلبية شهيتك.",
+      "security": "أمان البيانات",
+      "descriptionSecurity": "نحن نأخذ أمان بياناتك على محمل الجد. جميع المعلومات الشخصية والمعاملات المالية مشفرة ومحمية.",
+      "appDescription": "تطبيق كبسة هو الحل الأمثل لتلبية شهيتك.",
+      "button": {
+        "text": "تحميل الآن",
+        "link": "https://example.com/download",
+        "install": "تثبيت"
+      },
+      "cta": {
+        "title": "ابدأ الآن",
+        "description": "قم بتنزيل تطبيق كبسة وابدأ في استكشاف أشهى المأكولات."
+      },
+      "buttons": {
+        "install":"تثبيت",
+        "appStore": {
+          "text": "تحميل على متجر التطبيقات",
+          "title": "تحميل على متجر التطبيقات",
+          "name": "appStore",
+          "link": "https://apps.apple.com/app/id123456789",
+          "install": "تثبيت"
+        },
+        "googlePlay": {
+          "text": "تحميل على جوجل بلاي",
+          "title": "تحميل على جوجل بلاي",
+          "name": "googlePlay",
+          "link": "https://play.google.com/store/apps/details?id=com.example.kabsa"
+        }       
+      },
+      "stats": {
+        "users": "1000+",
+        "rating": "4.5"
+      }
+    },
   "process": {
     "install": {
       "title": "حمل التطبيق",
@@ -125,6 +169,18 @@
       "locationMin": "الموقع يجب أن يكون 10 أحرف على الأقل",
       "locationMax": "الموقع طويل جداً"
     }
+  },
+  "brands": {
+    "title": "العلامات التجارية",
+    "description": "استكشف مجموعة متنوعة من العلامات التجارية الموثوقة التي تقدم أشهى الأطباق.",
+    "Al-Thawaq": "الذوق",
+    "Army-Burger": "برجر الجيش",
+    "Deek": "ديك",
+    "Farooj-Abu-Al-Abed": "فروج أبو العبد",
+    "Salwa&Fairuz": "سلوى وفيروز",
+    "Chef-Eyad": "الشيف إياد",
+    "Al-Hanini-Restaurant": "مطعم الحنيني",
+    "Almond-Coffee-House": "المــوند كافي هاوس"
   },
   "registerResturant": {
     "title": "انضم إلى كبسة!",

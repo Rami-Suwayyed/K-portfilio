@@ -1,6 +1,11 @@
 {
   "welcome": "Welcome",
   "hello": "Hello {{name}}",
+  "email": "Email",
+  "email.company": "info@kabseeh.com",
+  "email.support": "info@kabseeh.com",
+  "phone": "Phone",
+  "phone.support": "+962 790 311 101",
     "metadata": {
     "title": "كبسه - Kabsa Food Ordering",
     "description": "The best food delivery app  .أفضل تطبيق لتوصيل الطعام"
@@ -10,7 +15,9 @@
     "about": "About",
     "menu": "Menu",
     "feature": "Features",
-    "pricing": "brands",
+    "pricing": "Pricing",
+    "brands": "Brands",
+    "partners": "Partners",
     "review": "Reviews",
     "contact": "Contact",
     "downloadApp": "Download App"
@@ -57,6 +64,43 @@
       "description": "Track your order from kitchen to doorstep with live updates and estimated delivery times."
     }
   },
+     "downloadApp": {
+      "title": "Download the App",
+      "description": "Get the Kabseh app now and enjoy a seamless food ordering experience.",
+      "subtitle": "Kabseh is the perfect solution to satisfy your cravings.",
+      "security": "Data Security",
+      "descriptionSecurity": "We take your data security seriously. All personal information and financial transactions are encrypted and protected.",
+      "appDescription": "Kabseh is the perfect solution to satisfy your cravings.",
+      "button": {
+        "text": "Download Now",
+        "link": "https://example.com/download",
+        "install": "Install"
+      },
+      "cta": {
+        "title": "Start Now",
+        "description": "Download the Kabseh app and start exploring delicious dishes."
+      },
+      "buttons": {
+        "install":"Install",
+        "appStore": {
+          "text": "Download on the App Store",
+          "title": "Download on the App Store",
+          "name": "appStore",
+          "link": "https://apps.apple.com/app/id123456789",
+          "install": "Install"
+        },
+        "googlePlay": {
+          "text": "Download on Google Play",
+          "title": "Download on Google Play",
+          "name": "googlePlay",
+          "link": "https://play.google.com/store/apps/details?id=com.example.kabsa"
+        }       
+      },
+      "stats": {
+        "users": "1000+",
+        "rating": "4.5"
+      }
+    },
   "process": {
     "install": {
       "title": "Download the App",
@@ -129,6 +173,19 @@
     "description2": "Create your account and setup your profile to start exploring traditional flavors in your area.",
     "title3": "Enjoy The Features",
     "description3": "Browse our extensive menu of traditional dishes, read reviews, and select your favorite meals to add to cart."
+  },
+
+    "brands": {
+    "title": "Brands",
+    "description": "Explore a variety of trusted brands offering the most delicious dishes.",
+    "Al-Thawaq": "Al Thawaq",
+    "Army-Burger": "Army Burger",
+    "Deek": "Deek",
+    "Farooj-Abu-Al-Abed": "Farooj Abu Al-Abed",
+    "Salwa&Fairuz": "Salwa & Fairuz",
+    "Chef-Eyad": "Chef Eyad",
+    "Al-Hanini-Restaurant": "Al Hanini Restaurant",
+    "Almond-Coffee-House": "Almond Coffee House"
   },
   "registerResturant": {
     "title": "Join Kabseh JO!",

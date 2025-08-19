@@ -29,6 +29,10 @@ export default function Home() {
 
 
 
+
+
+
+
   if (isLoading) {
     return (
       <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
@@ -43,12 +47,14 @@ export default function Home() {
       <Navigation />
       <HeroSection scrollToContact={scrollToContact}/>
       <About />
-      <EasySteps /> 
+      <EasySteps />
+      
       <RegisterResturant />
       <RegisterCaptin />
       <Clients />
       <DownloadApp />
       <ContactUs contactRef={contactRef}/>
+
       <Footer/>
     </div>
   );

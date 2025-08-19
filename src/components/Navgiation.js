@@ -7,7 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher'
 import Image from 'next/image'
 import logo from '../../public/images/Kabseh-Logo-white (1).png'
 import logoOrange from '../../public/images/Kabseh-LogoText.png'
-import favicon from '../../public/images/101-1731465857-250.ico'
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
@@ -71,7 +71,7 @@ export default function Navigation() {
     { id: 'home', label: t('navigation.home') || 'Home' },
     { id: 'about', label: t('navigation.about') || 'About' },
     { id: 'feature', label: t('navigation.feature') || 'Feature' },
-    { id: 'brands', label: t('navigation.pricing') || 'Pricing' },
+    { id: 'brands', label: t('navigation.partners') || 'Partners' },
     { id: 'downloadApp', label: t('navigation.downloadApp') || 'Download App' },
     { id: 'contact', label: t('navigation.contact') || 'Contact' }
   ]
@@ -88,7 +88,7 @@ export default function Navigation() {
           isSticky ? 'h-16' : 'h-20'
         }`}>
           <Link 
-            href="/downloadApp" 
+            href="/" 
             className={`text-2xl font-bold transition-all duration-500 ${
               isSticky 
                 ? 'text-primary-gradient' 

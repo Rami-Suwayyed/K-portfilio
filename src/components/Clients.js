@@ -11,52 +11,52 @@ const Clients = () => {
   const restaurantBrands = [
     {
       id: 1,
-      name: { en: "Al Thawaq", ar: "الذواق" },
+      name: t("brands.Al-Thawaq"),
       logo: "/images/partners/Al-Thawaq.jpg",
       alt: "Al Thawaq"
     },
     {
       id: 2,
-      name: { en: "Army Burger", ar: "ارمي برجر" },
+      name: t("brands.Army-Burger"),
       logo: "/images/partners/Army-Burger.jpg",
       alt: "Army Burger"
     },
     {
       id: 3,
-      name: { en: "Deek Al Tazaj", ar: "ديك الطازج" },
+      name: t("brands.Deek"),
       logo: "/images/partners/Deek.jpg",
       alt: "Deek"
     },
     {
       id: 4,
-      name: { en: "Farooj Abu Al-Abed", ar: "فروج ابو العبد" },
+      name: t("brands.Farooj-Abu-Al-Abed"),
       logo: "/images/partners/Abu-Al-Abed.jpg",
       alt: "Farooj Abu Al-Abed"
     },
     {
       id: 5,
-      name: { en: "Salwa & Fairuz", ar: "سلوى وفيروز" },
+      name: t("brands.Salwa&Fairuz"),
       logo: "/images/partners/Salwa-Fairuz.jpg",
       alt: "Salwa & Fairuz"
     },
     {
       id: 6,
-      name: { en: "Chef Eyad", ar: "شيف اياد" },
+      name: t("brands.Chef-Eyad"),
       logo: "/images/partners/Chef-Eyad.jpg",
       alt: "Chef Eyad"
     },
     {
       id: 7,
-      name: { en: "Al-Hanini Restaurant", ar: "مطعم الهنيني" },
+      name: t("brands.Al-Hanini-Restaurant"),
       logo: "/images/partners/Al-Hanini-Restaurant.jpg",
       alt: "Al-Hanini Restaurant"
     },
     {
       id: 8,
-      name: { en: "Almond Coffee House", ar: "الماند كوفي هاوس" },
+      name: t("brands.Almond-Coffee-House"),
       logo: "/images/partners/Almond-Coffee-House.jpg",
       alt: "Almond Coffee House"
-    }
+    },
   ];
 
   const animation = { duration: 25000, easing: (t) => t };
@@ -132,18 +132,17 @@ const Clients = () => {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       id='brands'
       className="relative py-20  overflow-hidden"
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary-light)] to-white opacity-50"></div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 transform ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-body)] mb-4">
             {t('clients.title')}
             <span className="block text-[var(--primary)] mt-2">{t('clients.subtitle')}</span>
@@ -151,10 +150,9 @@ const Clients = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary-dark)] mx-auto rounded-full"></div>
         </div>
 
-        <div 
-          className={`relative transition-all duration-1000 ${
-            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
-          }`}
+        <div
+          className={`relative transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
+            }`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -163,8 +161,8 @@ const Clients = () => {
               <div
                 key={`${brand.id}-${index}-${i18n.language}`}
                 className="keen-slider__slide brand-slide"
-                style={{ 
-                  minWidth: '220px', 
+                style={{
+                  minWidth: '220px',
                   width: 'auto'
                 }}
               >
@@ -184,26 +182,25 @@ const Clients = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)] to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </div>
                   <h3 className="text-center mt-4 text-[var(--text-body)] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {brand.name[i18n.language] || brand.name.en}
+                    {brand.name}
                   </h3>
                 </div>
               </div>
             ))}
           </div>
-          
+
           <div className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-0 bottom-0 w-32 bg-gradient-to-${isRTL ? 'l' : 'r'} from-[var(--secondary-light)] to-transparent z-10 pointer-events-none`}></div>
           <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-0 bottom-0 w-32 bg-gradient-to-${isRTL ? 'r' : 'l'} from-[var(--secondary-light)] to-transparent z-10 pointer-events-none`}></div>
         </div>
 
-        <div className={`text-center mt-16 transition-all duration-1000 delay-500 transform ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
+        <div className={`text-center mt-16 transition-all duration-1000 delay-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}>
           <p className="text-lg text-[var(--text-body)] opacity-70 max-w-2xl mx-auto">
             {t('clients.description')}
           </p>
-          <button className="mt-8 px-8 py-4 bg-[var(--primary)] hover:bg-[var(--secondary-dark)] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          {/* <button className="mt-8 px-8 py-4 bg-[var(--primary)] hover:bg-[var(--secondary-dark)] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
             {t('clients.button')}
-          </button>
+          </button> */}
         </div>
       </div>
 

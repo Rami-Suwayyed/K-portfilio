@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Twitter, 
-  Facebook, 
-  Instagram, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Twitter,
+  Facebook,
+  Instagram,
   Linkedin,
   ChevronRight,
   Send
@@ -61,7 +61,7 @@ export default function Footer() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none z-0"
         priority
       />
-      
+
       <div className="relative z-10">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-36">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -72,20 +72,27 @@ export default function Footer() {
               <div className="space-y-3 text-white/90">
                 <div className={`flex items-start gap-3`}>
                   <MapPin className="w-4 h-4 text-white mt-1 flex-shrink-0" />
-                  <span className="leading-relaxed">{t('footer.addressText')}</span>
+                  <a href={`https://maps.google.com/?q=${t('footer.addressText')}`} target="_blank" rel="noopener noreferrer" className="hover:text-white/100 transition-colors">
+                    <span className="leading-relaxed">{t('footer.addressText')}</span>
+                  </a>
                 </div>
-                <div className={`flex items-center  gap-3`}>
+                <div className={`flex items-center gap-3`}>
                   <Phone className={`w-4 h-4 text-white flex-shrink-0 ${isRTL ? 'flex-row-reverse' : ''}`} />
-                  <span dir="ltr">+0962 79 0311 101</span>
+                  <a href={`tel:${t('phone.support').replace(/\s+/g, '')}`} className="hover:text-white/100 transition-colors">
+                    <span dir="ltr">{t('phone.support')}</span>
+                  </a>
                 </div>
                 <div className={`flex items-center gap-3`}>
                   <Mail className="w-4 h-4 text-white flex-shrink-0" />
-                  <span dir="ltr">info@kabseh.com</span>
+                  <a href={`mailto:${t('email.support')}`} className="hover:text-white/100 transition-colors">
+                    <span dir="ltr">{t('email.support')}</span>
+                  </a>
                 </div>
               </div>
-              
+
               <div className={`flex gap-2 pt-4 `}>
                 <Link
+                  target='_blank'
                   href="https://x.com/kabsehjo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.twitter')}
@@ -93,6 +100,7 @@ export default function Footer() {
                   <Twitter className="w-4 h-4" />
                 </Link>
                 <Link
+                  target='_blank'
                   href="https://www.facebook.com/kabsehjo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.facebook')}
@@ -100,6 +108,7 @@ export default function Footer() {
                   <Facebook className="w-4 h-4" />
                 </Link>
                 <Link
+                  target='_blank'
                   href="https://www.instagram.com/kabsehjo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.instagram')}
@@ -107,6 +116,7 @@ export default function Footer() {
                   <Instagram className="w-4 h-4" />
                 </Link>
                 <Link
+                  target='_blank'
                   href="https://www.linkedin.com/company/kabseh-jo/"
                   className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-[var(--secondary-dark)] hover:text-primary transition-all duration-300 group"
                   aria-label={t('footer.socialMedia.linkedin')}
@@ -209,28 +219,26 @@ export default function Footer() {
               <p className="text-white/90 text-sm leading-relaxed">
                 {t('footer.newsletterText')}
               </p>
-          
+
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/20">
           <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-6">
-            <div className={`flex flex-col md:flex-row ${
-              isRTL ? 'md:flex-row-reverse' : ''
-            } justify-between items-center gap-4`}>
+            <div className={`flex flex-col md:flex-row ${isRTL ? 'md:flex-row-reverse' : ''
+              } justify-between items-center gap-4`}>
               <div className={`text-sm text-white/90 ${isRTL ? 'text-right' : 'text-left'}`}>
                 &copy;{' '}
-                <button 
+                <button
                   onClick={() => scrollToSection('home')}
                   className="border-b border-white/30 hover:border-white transition-colors"
                 >
-                  {t('footer.siteName')}
                 </button>
-                , {t('footer.allRightsReserved')} {" "} {t('footer.designedBy')}{' '}
-        
+                {t('footer.allRightsReserved')} 
+
               </div>
-       
+
             </div>
           </div>
         </div>
