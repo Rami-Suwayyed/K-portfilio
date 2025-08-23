@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/favicon.ico',
     shortcut: '/images/favicon.ico',
-    apple: '/images/Logo.webp',
+    apple: '/images/favicon.ico',
   },
 }
 
