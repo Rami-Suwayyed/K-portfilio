@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     },
   ],
   icons: {
-    icon: '/images/favicon-32.ico',
-    shortcut: '/images/Logo.webp',
+    icon: '/images/favicon.ico',
+    shortcut: '/images/favicon.ico',
     apple: '/images/Logo.webp',
   },
 }

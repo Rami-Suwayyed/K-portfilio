@@ -12,6 +12,7 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [isMounted, setIsMounted] = useState(false)
   const { t } = useTranslation()
 
   const toggleMenu = () => {
@@ -23,6 +24,7 @@ export default function Navigation() {
   }
 
   useEffect(() => {
+    setIsMounted(true)
     const handleScroll = () => {
       const scrollTop = window.scrollY
       setIsSticky(scrollTop > 100)

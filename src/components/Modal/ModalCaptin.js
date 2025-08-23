@@ -69,7 +69,7 @@ function Modal({ setIsOpen }) {
                     </button>
 
                     <div className='bg-gradient-to-r from-[var(--primary)] to-red-600 p-6 rounded-t-3xl text-center'>
-                        <h1 className='text-2xl font-bold text-[var(--text-heading)] mb-2'>{t('modal.title')}</h1>
+                        <h1 className='text-2xl font-bold text-[var(--text-heading)] mb-2'>{t('modalCaptin.title')}</h1>
                     </div>
 
                     <form ref={formRef} className='p-6 space-y-5' onSubmit={handleSubmit}>
