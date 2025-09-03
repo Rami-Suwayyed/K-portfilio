@@ -32,9 +32,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Add suppressHydrationWarning to prevent hydration mismatches from browser extensions
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-montserrat`}>
+      <body suppressHydrationWarning className={`${montserrat.variable} font-montserrat`}>
         <TranslationProvider>
           {children}
         </TranslationProvider>

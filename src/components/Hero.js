@@ -60,12 +60,12 @@ export default function HeroSection({scrollToContact}) {
         className={`absolute top-1/2 -translate-y-1/2 ${isRTL ? 'left-0' : 'right-0'} pointer-events-none`}
         priority
       />
-      <Image
+      {/* <Image
         src={bgBottom}
         alt=""
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
         priority
-      />
+      /> */}
 
       <div className="relative z-10 min-h-screen flex items-center pt-32 pb-24 md:pt-2 md:pb-0">
         <div className="container mx-auto px-4 lg:px-8 max-w-8xl">
@@ -142,8 +142,8 @@ export default function HeroSection({scrollToContact}) {
       </div>
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <div className="w-6 h-10 border-2 border-[var(--primary)] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[var(--primary)] rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-[var(--white)] rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-[var(--white)] rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

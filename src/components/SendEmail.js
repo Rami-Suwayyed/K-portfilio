@@ -19,7 +19,6 @@ function SendEmail() {
         toast.error('Failed to send email');
       }
     } catch (error) {
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>',error);
       setError(error.message);
     } finally {
       setIsLoading(false);

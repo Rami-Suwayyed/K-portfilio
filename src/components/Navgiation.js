@@ -171,9 +171,9 @@ export default function Navigation() {
               </button>
             ))}
             <div className="px-4 py-2 border-t border-gray-200 mt-4 pt-4">
-              <button className="btn-primary-gradient w-full px-6 py-3 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300">
-                {t('buttons.startFreeTrial') || 'Order Now'}
-              </button>
+               <button   key={'downloadApp'} onClick={() => scrollToSection('downloadApp')} className="btn-secondary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300 slideInRight">
+                  {t('buttons.startFreeTrial')}
+                </button>
             </div>
           </div>
         </div>

@@ -45,17 +45,15 @@ export default function Home() {
     <div className="bg-white">
       <Toaster position="top-right" reverseOrder={false} />
       <Navigation />
-      <HeroSection scrollToContact={scrollToContact}/>
+      <HeroSection scrollToContact={scrollToContact} />
       <About />
       <EasySteps />
-      
       <RegisterResturant />
       <RegisterCaptin />
       <Clients />
       <DownloadApp />
-      <ContactUs contactRef={contactRef}/>
-
-      <Footer/>
+      <ContactUs contactRef={contactRef} />
+      <Footer />
     </div>
   );
 }
