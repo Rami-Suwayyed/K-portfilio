@@ -42,28 +42,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className={`relative bg-primary-gradient text-white mt-24 pt-36 overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}>
-      <Image
-        src={bgCircle}
-        alt=""
-        className="absolute left-0 bottom-0 pointer-events-none z-0"
-        priority
-      />
-      <Image
-        src={bgTriangle}
-        alt=""
-        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0"
-        priority
-      />
-      <Image
-        src={bgTop}
-        alt=""
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none z-0"
-        priority
-      />
+    <footer className={`relative bg-primary-gradient text-white mt-10 pt-5 overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}>
+      {/* Removed curved background images for straight-line look */}
 
       <div className="relative z-10">
-        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-36">
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
               <h4 className="text-white text-lg font-semibold mb-4">
@@ -90,7 +73,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className={`flex gap-2 pt-4 `}>
+              <div className={`flex gap-2 pt-2 `}>
                 <Link
                   target='_blank'
                   href="https://x.com/kabsehjo/"
@@ -223,20 +206,19 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-white/20">
-          <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-6">
-            <div className={`flex flex-col md:flex-row ${isRTL ? 'md:flex-row-reverse' : ''
-              } justify-between items-center gap-4`}>
-              <div className={`text-sm text-white/90 ${isRTL ? 'text-right' : 'text-left'}`}>
-                &copy;{' '}
-                <button
+               <button
                   onClick={() => scrollToSection('home')}
                   className="border-b border-white/30 hover:border-white transition-colors"
                 >
                 </button>
-                {t('footer.allRightsReserved')} 
-
+        <div className="border-t border-white/20">
+          <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-6">
+            <div className={`flex flex-col md:flex-row ${isRTL ? 'md:flex-row-reverse' : ''
+              } justify-between items-center gap-2`}>
+              <div className={`text-sm text-white/90 ${isRTL ? 'text-right' : 'text-left'}`}>
+                {t('footer.allRightsReserved')}
+                {' '} &copy; {' '}
+               {t('footer.siteName')}
               </div>
 
             </div>
