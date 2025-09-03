@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-// import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import '../styles/animations.css'
 import {
@@ -16,9 +16,9 @@ import {
   ChevronRight,
   Send
 } from 'lucide-react'
-// import bgCircle from '../../public/images/bg-circle.png'
-// import bgTriangle from '../../public/images/bg-triangle.png'
-// import bgTop from '../../public/images/bg-top.png'
+import bgCircle from '../../public/images/bg-circle.png'
+import bgTriangle from '../../public/images/bg-triangle.png'
+import bgTop from '../../public/images/bg-top.png'
 
 export default function Footer() {
   const { t, i18n } = useTranslation()
@@ -62,10 +62,27 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer className={`relative bg-primary-gradient text-white mt-10 pt-5 overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}>
-      {/* Removed curved background images for straight-line look */}
-      
-      {/* Back to top button - fixed position with animation */}
+    <footer className={`relative bg-primary-gradient text-white mt-10 pt-16 overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}>
+      <Image
+        src={bgCircle}
+        alt=""
+        className="absolute left-0 bottom-0 pointer-events-none z-0"
+        priority
+      />
+      <Image
+        src={bgTriangle}
+        alt=""
+        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0"
+        priority
+      />
+      {/* <Image
+        src={bgTop}
+        alt=""
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full pointer-events-none z-0"
+        priority
+      /> */}
+
+       {/* Back to top button - fixed position with animation */}
       {showButton && (
         <button
           onClick={() => scrollToSection('home')}
@@ -87,8 +104,8 @@ export default function Footer() {
       )}
 
       <div className="relative z-10">
-        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className={`space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
               <h4 className="text-white text-lg font-semibold mb-4">
                 {t('footer.address')}
