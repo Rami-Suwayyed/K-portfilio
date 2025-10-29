@@ -35,6 +35,14 @@ export default function RootLayout({
   // Add suppressHydrationWarning to prevent hydration mismatches from browser extensions
   return (
     <html lang="en">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2356875822234904" />
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2356875822234904"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body suppressHydrationWarning className={`${montserrat.variable} font-montserrat`}>
         <TranslationProvider>
           {children}
