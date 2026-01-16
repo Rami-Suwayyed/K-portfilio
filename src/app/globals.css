@@ -4,13 +4,13 @@
   --white: #ffffff;
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #f04a24;
+  --primary: #D90416;
   --secondary-light: #fff8f2;
   --secondary-dark: #4f8765;
   --text-heading: #ffffff;
   --text-body: #333333;
   --text-link: #ffffff;
-  --text-link-hover: #f04a24;
+  --text-link-hover: #D90416;
   --background-default: #fff8f2;
   --nav-height: 64px;
   --container-max-width: 1200px;
@@ -170,7 +170,7 @@
 
 .back-to-top:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(240, 74, 36, 0.3);
+  box-shadow: 0 4px 12px rgba(217, 4, 22, 0.3);
 }
 
 html {

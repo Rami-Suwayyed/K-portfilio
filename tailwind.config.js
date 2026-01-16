@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#f04a24',
+        primary: '#D90416',
         secondary: {
           light: '#fff8f2',
           dark: '#4f8765',
@@ -17,7 +17,7 @@ module.exports = {
           heading: '#ffffff',
           body: '#333333',
           link: '#ffffff',
-          'link-hover': '#f04a24',
+          'link-hover': '#D90416',
         },
         background: {
           default: '#fff8f2',
@@ -44,8 +44,8 @@ module.exports = {
         'custom': '50px',
       },
       backgroundImage: {
-        'hero-gradient': 'linear-gradient(135deg, rgba(240,74,36,0.8), rgba(79,135,101,0.8))',
-        'button-gradient': 'linear-gradient(135deg, #f04a24, #4f8765)',
+        'hero-gradient': 'linear-gradient(135deg, rgba(217,4,22,0.8), rgba(79,135,101,0.8))',
+        'button-gradient': 'linear-gradient(135deg, #D90416, #4f8765)',
         'dots-pattern': 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 2px, transparent 2px)',
         'triangles-pattern': 'conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.1) 0deg, transparent 120deg, rgba(255,255,255,0.1) 240deg, transparent 360deg)',
       },

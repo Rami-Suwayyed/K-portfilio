@@ -134,7 +134,7 @@ const h1 = {
 };
 
 const alertBadge = {
-  backgroundColor: '#f04a24',
+  backgroundColor: '#D90416',
   color: '#ffffff',
   fontSize: '14px',
   fontWeight: '600',
@@ -153,12 +153,12 @@ const prioritySection = {
   borderRadius: '12px',
   padding: '20px',
   margin: '0 0 24px 0',
-  border: '2px solid #f04a24',
+  border: '2px solid #D90416',
   textAlign: 'center',
 };
 
 const priorityText = {
-  color: '#f04a24',
+  color: '#D90416',
   fontSize: '20px',
   fontWeight: '700',
   margin: '0 0 8px 0',
@@ -176,7 +176,7 @@ const sectionTitle = {
   fontSize: '18px',
   fontWeight: '700',
   margin: '0 0 16px 0',
-  borderBottom: '2px solid #f04a24',
+  borderBottom: '2px solid #D90416',
   paddingBottom: '8px',
 };
 
@@ -213,7 +213,7 @@ const infoValue = {
   padding: '8px 12px',
   backgroundColor: '#fff8f2',
   borderRadius: '6px',
-  border: '1px solid rgba(240, 74, 36, 0.1)',
+  border: '1px solid rgba(217, 4, 22, 0.1)',
 };
 
 const inquirySection = {
@@ -236,7 +236,7 @@ const subjectText = {
   padding: '12px 16px',
   backgroundColor: '#fff8f2',
   borderRadius: '8px',
-  border: '2px solid #f04a24',
+  border: '2px solid #D90416',
 };
 
 const messageContainer = {
@@ -247,7 +247,7 @@ const messageContent = {
   backgroundColor: '#fff8f2',
   borderRadius: '8px',
   padding: '16px',
-  border: '1px solid rgba(240, 74, 36, 0.2)',
+  border: '1px solid rgba(217, 4, 22, 0.2)',
   margin: '8px 0 0 0',
 };
 

@@ -227,7 +227,7 @@ function ContactUs({ contactRef }) {
                                 className="w-full py-4 px-8 rounded-2xl font-semibold text-white text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                                 style={{
                                     backgroundColor: 'var(--primary)',
-                                    boxShadow: state.submitting ? 'none' : '0 10px 30px rgba(240, 74, 36, 0.3)'
+                                    boxShadow: state.submitting ? 'none' : '0 10px 30px rgba(217, 4, 22, 0.3)'
                                 }}
                             >
                                 {state.submitting ? (

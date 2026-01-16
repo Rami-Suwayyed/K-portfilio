@@ -1,4 +1,5 @@
 {
+   "name": "كبسه لخدمة التوصيل",
   "welcome": "مرحباً",
   "hello": "أهلاً {{name}}",
   "email": "البريد الإلكتروني",
@@ -7,8 +8,9 @@
   "phone": "الهاتف",
   "phone.support": "+962 790 311 101",
   "metadata": {
-    "title": "كبسه - Kabsa Food Ordering",
-    "description": "The best food delivery app  .أفضل تطبيق لتوصيل الطعام"
+    "title": "كبسه - كبسه لخدمة التوصيل",
+    "description": "أفضل تطبيق لتوصيل الطعام",
+    "name": "كبسه لخدمة التوصيل"
   },
     "navigation": {
     "home": "الرئيسية",

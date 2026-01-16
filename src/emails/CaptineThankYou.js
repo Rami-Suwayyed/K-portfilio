@@ -98,11 +98,11 @@ const container = {
     maxWidth: '600px',
     borderRadius: '12px',
     overflow: 'hidden',
-    boxShadow: '0 8px 32px rgba(240, 74, 36, 0.1)',
+    boxShadow: '0 8px 32px rgba(217, 4, 22, 0.1)',
 };
 
 const logoSection = {
-    backgroundColor: '#f04a24',
+    backgroundColor: '#D90416',
     padding: '32px 24px',
     textAlign: 'center',
 };
@@ -113,10 +113,10 @@ const logo = {
 };
 
 const header = {
-    backgroundColor: 'linear-gradient(135deg, #f04a24 0%, #4f8765 100%)',
+    backgroundColor: 'linear-gradient(135deg, #D90416 0%, #4f8765 100%)',
     padding: '40px 24px 32px',
     textAlign: 'center',
-    background: '#f04a24',
+    background: '#D90416',
 };
 
 const h1 = {
@@ -140,7 +140,7 @@ const content = {
 };
 
 const greeting = {
-    color: '#f04a24',
+    color: '#D90416',
     fontSize: '20px',
     fontWeight: '600',
     margin: '0 0 24px 0',
@@ -155,14 +155,14 @@ const text = {
 
 const messageContainer = {
     backgroundColor: '#fff8f2',
-    border: '2px solid #f04a24',
+    border: '2px solid #D90416',
     borderRadius: '16px',
     padding: '24px',
     margin: '32px 0',
 };
 
 const messageLabel = {
-    color: '#f04a24',
+    color: '#D90416',
     fontSize: '18px',
     fontWeight: '700',
     margin: '0 0 20px 0',
@@ -173,7 +173,7 @@ const messageDetails = {
     backgroundColor: '#ffffff',
     borderRadius: '12px',
     padding: '20px',
-    border: '1px solid rgba(240, 74, 36, 0.1)',
+    border: '1px solid rgba(217, 4, 22, 0.1)',
 };
 
 const labelText = {
@@ -213,7 +213,7 @@ const signatureText = {
 };
 
 const teamName = {
-    color: '#f04a24',
+    color: '#D90416',
     fontWeight: '600',
 };
 

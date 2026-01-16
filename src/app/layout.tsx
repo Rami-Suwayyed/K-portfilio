@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: 'Kabseh Jordan',
-      url: 'https://Kabseh.com',
+      url: 'https://web.kabseh.app',
     },
   ],
   icons: {
@@ -41,6 +41,21 @@ export default function RootLayout({
           async 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2356875822234904"
           crossOrigin="anonymous"
+        />
+        {/* Google Analytics */}
+        <script 
+          async 
+          src="https://www.googletagmanager.com/gtag/js?id=G-0Z9SX67Z2E"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0Z9SX67Z2E');
+            `,
+          }}
         />
       </head>
       <body suppressHydrationWarning className={`${montserrat.variable} font-montserrat`}>

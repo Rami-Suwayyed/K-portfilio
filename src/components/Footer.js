@@ -19,6 +19,7 @@ import {
 import bgCircle from '../../public/images/bg-circle.png'
 import bgTriangle from '../../public/images/bg-triangle.png'
 import bgTop from '../../public/images/bg-top.png'
+import logoWhite from '../../public/images/logo-w.png'
 
 export default function Footer() {
   const { t, i18n } = useTranslation()
@@ -86,7 +87,7 @@ export default function Footer() {
       {showButton && (
         <button
           onClick={() => scrollToSection('home')}
-          className="fixed bottom-6 right-6 bg-[#f04a24] hover:bg-[#dd4520] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg focus:outline-none z-50 animate-fadeIn hover:animate-pulse"
+          className="fixed bottom-6 right-6 bg-[#D90416] hover:bg-[#b80313] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg focus:outline-none z-50 animate-fadeIn hover:animate-pulse"
           aria-label="Back to top"
           style={{
             animation: 'fadeIn 0.5s ease-in-out',
@@ -265,11 +266,28 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-white/20">
-          <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-6">
+        <div className="border-t border-white/10">
+          <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-2">
             <div className={`flex flex-col md:flex-row ${isRTL ? 'md:flex-row-reverse' : ''
-              } justify-between items-center gap-2`}>
-              <div className={`text-sm text-white/90 ${isRTL ? 'text-right' : 'text-left'}`}>
+              } justify-between items-center gap-4`}>
+              
+              {/* Logo */}
+              <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                <Image 
+                  src={logoWhite} 
+                  alt="Kabseh Logo" 
+                  width={100} 
+                  height={100}
+                  className="h-12 w-auto object-contain"
+                  priority
+                />
+                <span className="text-lg font-semibold text-white whitespace-nowrap">
+                  {t('name')}
+                </span>
+              </div>
+
+              {/* Copyright */}
+              <div className={`text-sm text-white/90 ${isRTL ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
                 {t('footer.allRightsReserved')}
                 {' '} &copy; {' '}
                {t('footer.siteName')}

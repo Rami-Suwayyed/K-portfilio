@@ -1,4 +1,5 @@
 {
+  "name": "Kabseh for Delivery Services",
   "welcome": "Welcome",
   "hello": "Hello {{name}}",
   "email": "Email",
@@ -7,8 +8,9 @@
   "phone": "Phone",
   "phone.support": "+962 790 311 101",
     "metadata": {
-    "title": "كبسه - Kabsa Food Ordering",
-    "description": "The best food delivery app  .أفضل تطبيق لتوصيل الطعام"
+    "title": "Kabseh for Delivery Services",
+    "description": "The best food delivery app",
+    "name": "Kabseh for Delivery Services"
   },
   "navigation": {
     "home": "Home",

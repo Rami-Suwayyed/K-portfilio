@@ -6,13 +6,33 @@ import {
     Smartphone,
     Download,
     Star,
-    ChefHat,
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../public/images/logo.png';
 
 function DownloadApp() {
     const { t, i18n } = useTranslation();
     const isRTL = i18n.language === 'ar';
+
+    // Function to detect device and redirect to appropriate store
+    const handleDownloadClick = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        
+        // Check if iOS
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.open('https://apps.apple.com/om/app/kabseh-%D9%83%D8%A8%D8%B3%D9%87/id6463165637?l=ar', '_blank');
+        }
+        // Check if Android
+        else if (/android/i.test(userAgent)) {
+            window.open('https://play.google.com/store/apps/details?id=com.metafortech.kabsauser&hl=ar', '_blank');
+        }
+        // Default to Play Store for other devices
+        else {
+            window.open('https://play.google.com/store/apps/details?id=com.metafortech.kabsauser&hl=ar', '_blank');
+        }
+    };
+
     return (
         <section id="downloadApp" className="py-20 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
@@ -90,28 +110,37 @@ function DownloadApp() {
 
                         <div className={`relative ${isRTL ? 'lg:order-1' : ''}`}>
                             <div className="relative mx-auto w-64 h-96">
-                                <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500 rounded-[3rem] transform rotate-6 opacity-20"></div>
-                                <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-[3rem] transform -rotate-3 opacity-30"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#D90416] to-red-700 rounded-[3rem] transform rotate-6 opacity-20"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#D90416] to-red-800 rounded-[3rem] transform -rotate-3 opacity-30"></div>
                                 <div className="relative bg-gray-900 rounded-[3rem] p-2 shadow-2xl">
                                     <div className="bg-gray-800 rounded-[2.5rem] h-full flex flex-col">
                                         <div className="h-6 bg-gray-700 rounded-t-[2.5rem] flex items-center justify-center">
                                             <div className="w-16 h-1 bg-gray-600 rounded-full"></div>
                                         </div>
                                         <div className="flex-1 bg-white rounded-[2rem] m-1 p-6 flex flex-col items-center justify-center">
-                                            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-4">
-                                                <ChefHat className="w-8 h-8 text-white" />
+                                            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4 p-2 shadow-lg border border-gray-100">
+                                                <Image 
+                                                    src={logo} 
+                                                    alt="Kabseh Logo" 
+                                                    width={48} 
+                                                    height={48}
+                                                    className="w-full h-full object-contain"
+                                                />
                                             </div>
                                             <h4 className="font-bold text-gray-900 mb-2">{t('appName')}</h4>
                                             <p className="text-xs text-gray-500 text-center mb-4">{t('downloadApp.appDescription')}</p>
                                             <div className="w-full h-2 bg-gray-200 rounded-full mb-4">
-                                                <div className="w-3/4 h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                                                <div className="w-3/4 h-full bg-[#D90416] rounded-full"></div>
                                             </div>
                                             <div className="flex items-center gap-1 mb-4">
                                                 {[...Array(5)].map((_, i) => (
                                                     <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                                                 ))}
                                             </div>
-                                            <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
+                                            <button 
+                                                onClick={handleDownloadClick}
+                                                className="w-full bg-[#D90416] text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-shadow duration-300 cursor-pointer hover:bg-[#b80313]"
+                                            >
                                                 <Download className="w-4 h-4" />
                                                 {t('downloadApp.buttons.install')}
                                             </button>

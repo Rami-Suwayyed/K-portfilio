@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import LanguageSwitcher from './LanguageSwitcher'
 import Image from 'next/image'
-import logo from '../../public/images/Kabseh-Logo-white (1).png'
+import logo from '../../public/images/Kabseh-Logo-white.png'
 import logoOrange from '../../public/images/Kabseh-LogoText.png'
 
 export default function Navigation() {
@@ -132,7 +132,10 @@ export default function Navigation() {
 
           <div className="flex items-center space-x-2 md:space-x-4">
             <LanguageSwitcher />
-            <button className="hidden md:block btn-primary-gradient px-4 md:px-6 py-2 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300 text-sm md:text-base">
+            <button 
+              onClick={() => scrollToSection('downloadApp')}
+              className="hidden md:block btn-primary-gradient px-4 md:px-6 py-2 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+            >
               {t('buttons.startFreeTrial') || 'Start Free Trial'}
             </button>
             <button
@@ -171,9 +174,12 @@ export default function Navigation() {
               </button>
             ))}
             <div className="px-4 py-2 border-t border-gray-200 mt-4 pt-4">
-               <button   key={'downloadApp'} onClick={() => scrollToSection('downloadApp')} className="btn-secondary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300 slideInRight">
-                  {t('buttons.startFreeTrial')}
-                </button>
+               <button 
+                 onClick={() => scrollToSection('downloadApp')} 
+                 className="w-full btn-secondary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300"
+               >
+                 {t('buttons.startFreeTrial')}
+               </button>
             </div>
           </div>
         </div>
