@@ -1,14 +1,26 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import resourcesToBackend from 'i18next-resources-to-backend';
+
+// Import translations directly instead of using dynamic imports
+import enCommon from '../../public/locales/en/common.json';
+import arCommon from '../../public/locales/ar/common.json';
 
 // Always use a default language for SSR
 const defaultLanguage = 'en';
 
+const resources = {
+  en: {
+    common: enCommon,
+  },
+  ar: {
+    common: arCommon,
+  },
+};
+
 i18n
   .use(initReactI18next)
-  .use(resourcesToBackend((language, namespace) => import(`../../public/locales/${language}/${namespace}.json`)))
   .init({
+    resources,
     lng: defaultLanguage,
     fallbackLng: defaultLanguage,
     debug: false,

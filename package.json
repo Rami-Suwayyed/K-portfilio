@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export":"next export",
+    "output": "npm run build"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -19,7 +21,7 @@
     "keen-slider": "^6.8.6",
     "lucide-react": "^0.525.0",
     "mongoose": "^8.17.1",
-    "next": "15.4.1",
+    "next": "^15.5.6",
     "next-i18n-router": "^5.5.3",
     "next-i18next": "^15.4.2",
     "postcss": "^8.5.6",
