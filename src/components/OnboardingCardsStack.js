@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import aboutOne from '../../public/images/92.png'
-import aboutTwo from '../../public/images/93.png'
-import aboutThree from '../../public/images/94.png'
+import aboutOne from '../../public/images/10.png'
+import aboutTwo from '../../public/images/8.png'
+import aboutThree from '../../public/images/9.png'
 
 function OnboardingCardsStack() {
     return (
@@ -10,40 +10,40 @@ function OnboardingCardsStack() {
             <div className="group relative h-[600px] transition-all duration-700 ease-in-out">
                 <div className="flex items-center justify-center h-full">
                     <div className="relative w-[300px] h-full group-hover:w-auto group-hover:flex group-hover:gap-8">
-                        <div className="absolute left-0 top-0 w-[300px] h-[600px] transition-all duration-700 ease-in-out origin-bottom-left rotate-[-8deg] group-hover:rotate-0 group-hover:relative group-hover:w-auto group-hover:h-[700px] z-10 group-hover:z-auto">
-                            <div className="relative w-full h-full group-hover:h-[700px] group-hover:w-[350px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+                        <div className="absolute left-0 top-0 w-[300px] h-[600px] transition-all duration-700 ease-in-out origin-bottom-left rotate-[-8deg] group-hover:rotate-0 group-hover:relative group-hover:w-auto group-hover:h-[700px] z-10 group-hover:z-auto hover:scale-105">
+                            <div className="relative w-full h-full group-hover:h-[700px] group-hover:w-[350px] bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-[#D90416]/30">
                                 <Image
                                     src={aboutOne}
                                     alt="Discover Local Flavors"
                                     fill
                                     sizes="(max-width: 400px) 100vw, 350px"
-                                    className="object-cover group-hover:object-contain"
+                                    className="object-cover group-hover:object-contain transition-transform duration-500"
                                     priority
                                 />
                             </div>
                         </div>
                         
-                        <div className="absolute left-[20px] top-[-10px] w-[300px] h-[600px] transition-all duration-700 ease-in-out origin-bottom rotate-0 group-hover:rotate-0 group-hover:relative group-hover:left-0 group-hover:top-0 group-hover:w-auto group-hover:h-[700px] z-20 group-hover:z-auto">
-                            <div className="relative w-full h-full group-hover:h-[700px] group-hover:w-[350px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+                        <div className="absolute left-[20px] top-[-10px] w-[300px] h-[600px] transition-all duration-700 ease-in-out origin-bottom rotate-0 group-hover:rotate-0 group-hover:relative group-hover:left-0 group-hover:top-0 group-hover:w-auto group-hover:h-[700px] z-20 group-hover:z-auto hover:scale-105">
+                            <div className="relative w-full h-full group-hover:h-[700px] group-hover:w-[350px] bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-[#D90416]/30">
                                 <Image
                                     src={aboutTwo}
-                                    alt="No Surprises Just Great Prices"
+                                    alt="Unlock Daily Deals"
                                     fill
                                     sizes="(max-width: 400px) 100vw, 350px"
-                                    className="object-cover group-hover:object-contain"
+                                    className="object-cover group-hover:object-contain transition-transform duration-500"
                                     priority
                                 />
                             </div>
                         </div>
                         
-                        <div className="absolute left-[40px] top-[-20px] w-[300px] h-[600px] transition-all duration-700 ease-in-out origin-bottom-right rotate-[8deg] group-hover:rotate-0 group-hover:relative group-hover:left-0 group-hover:top-0 group-hover:w-auto group-hover:h-[700px] z-30 group-hover:z-auto">
-                            <div className="relative w-full h-full group-hover:h-[700px] group-hover:w-[350px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+                        <div className="absolute left-[40px] top-[-20px] w-[300px] h-[600px] transition-all duration-700 ease-in-out origin-bottom-right rotate-[8deg] group-hover:rotate-0 group-hover:relative group-hover:left-0 group-hover:top-0 group-hover:w-auto group-hover:h-[700px] z-30 group-hover:z-auto hover:scale-105">
+                            <div className="relative w-full h-full group-hover:h-[700px] group-hover:w-[350px] bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-[#D90416]/30">
                                 <Image
                                     src={aboutThree}
                                     alt="Track Every Bite"
                                     fill
                                     sizes="(max-width: 400px) 100vw, 350px"
-                                    className="object-cover group-hover:object-contain"
+                                    className="object-cover group-hover:object-contain transition-transform duration-500"
                                     priority
                                 />
                             </div>

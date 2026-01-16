@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next'
 import Card from './common/Card'
 import { Settings, Star } from 'lucide-react'
 import Image from 'next/image'
-import about from '../../public/images/About2.png'
+import aboutOne from '../../public/images/10.png'
+import aboutTwo from '../../public/images/8.png'
+import aboutThree from '../../public/images/9.png'
 
 function About() {
     const { t, i18n } = useTranslation()
@@ -20,13 +22,13 @@ function About() {
                     <div className={`space-y-8 ${isRTL ? 'lg:order-2' : 'lg:order-1'}`}>
                         <div className="space-y-6">
                             <div className="inline-block">
-                                <span className="bg-gradient-to-r from-[var(--primary)] to-orange-500 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
+                                <span className="bg-[#D90416] text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
                                     {t('about.subtitle')}
                                 </span>
                             </div>
                             
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-body)] leading-tight">
-                                <span className="bg-gradient-to-r from-[var(--primary)] to-orange-500 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-[#D90416] to-[#b80313] bg-clip-text text-transparent">
                                     {t('about.title')}
                                 </span>
                             </h1>
@@ -68,24 +70,53 @@ function About() {
                     </div>
 
                     <div className={`relative ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>
-                        <div className="relative">
-                 
-                           
-                            <div className="w-full max-w-2xl mx-auto">
-                                <div className="relative overflow-hidden rounded-2xl h-96 md:h-[400px] lg:h-[400px]">
-                                    <Image 
-                                        src={about} 
-                                        alt={t('about.subtitle')}
-                                        className="w-full h-full object-cover"
-                                        priority
-                                    />
+                        <div className="relative w-full max-w-2xl mx-auto h-[500px] flex items-center justify-center">
+                            {/* Stacked cards with animation */}
+                            <div className="group relative w-full h-[400px] perspective-1000">
+                                <div className="relative w-full h-full flex items-center justify-center">
+                                    {/* Card 1 - Left */}
+                                    <div className="absolute left-[50px] w-[260px] h-[380px] transition-all duration-700 ease-out transform -rotate-6 group-hover:rotate-0 group-hover:translate-x-[-80px] z-10 hover:z-40 hover:scale-110">
+                                        <div className="relative w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-[0_20px_60px_rgba(217,4,22,0.4)] transition-all duration-500">
+                                            <Image 
+                                                src={aboutOne} 
+                                                alt="Discover Local Flavors"
+                                                fill
+                                                sizes="260px"
+                                                className="object-cover"
+                                                priority
+                                            />
+                                        </div>
+                                    </div>
                                     
+                                    {/* Card 2 - Center */}
+                                    <div className="absolute left-1/2 -translate-x-1/2 w-[260px] h-[380px] transition-all duration-700 ease-out transform group-hover:translate-y-0 z-20 hover:z-40 hover:scale-110">
+                                        <div className="relative w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-[0_20px_60px_rgba(217,4,22,0.4)] transition-all duration-500">
+                                            <Image 
+                                                src={aboutTwo} 
+                                                alt="Unlock Daily Deals"
+                                                fill
+                                                sizes="260px"
+                                                className="object-cover"
+                                                priority
+                                            />
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Card 3 - Right */}
+                                    <div className="absolute right-[50px] w-[260px] h-[380px] transition-all duration-700 ease-out transform rotate-6 group-hover:rotate-0 group-hover:translate-x-[80px] z-10 hover:z-40 hover:scale-110">
+                                        <div className="relative w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-[0_20px_60px_rgba(217,4,22,0.4)] transition-all duration-500">
+                                            <Image 
+                                                src={aboutThree} 
+                                                alt="Track Every Bite"
+                                                fill
+                                                sizes="260px"
+                                                className="object-cover"
+                                                priority
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                
-                            
                             </div>
-
-                 
                         </div>
                     </div>
                 </div>
