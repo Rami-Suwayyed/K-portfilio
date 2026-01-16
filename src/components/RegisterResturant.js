@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
-import registerResturant from './../../public/images/registerResturant.png'
+import registerResturant from './../../public/images/registerResturant.webp'
 import Modal from './Modal/ModalResturant'
 
 function RegisterResturant() {

@@ -11,14 +11,21 @@ const nextConfig = {
   },
   trailingSlash: false,
   reactStrictMode: true,
+  poweredByHeader: false, // Remove X-Powered-By header for security
+  compress: true, // Enable gzip compression
   images: {
     unoptimized: true, // <-- REQUIRED for static export
+    formats: ['image/webp'], // Serve images in WebP format when possible
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'logos-world.net',
       },
     ],
+  },
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production', // Remove console.logs in production
   },
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
-import registerCaptin from './../../public/images/RegisterCaptin.png'
+import registerCaptin from './../../public/images/RegisterCaptin.webp'
 import Modal from './Modal/ModalCaptin'
 
 function RegisterCaptin() {
