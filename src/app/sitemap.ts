@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://Kabseeh.com'
+  const baseUrl = 'https://web.kabseh.app'
   const lastModified = new Date()
 
   return [

@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://Kabseeh.com'),
+  metadataBase: new URL('https://web.kabseh.app'),
   title: {
     default: 'Kabseh for Delivery Services - The Best Food Delivery App',
     template: '%s | Kabseh'
@@ -32,19 +32,19 @@ export const metadata: Metadata = {
   authors: [
     {
       name: 'Kabseh for Delivery Services',
-      url: 'https://Kabseeh.com',
+      url: 'https://web.kabseh.app',
     },
   ],
   creator: 'Kabseh',
   publisher: 'Kabseh for Delivery Services',
   alternates: {
-    canonical: 'https://Kabseeh.com',
+    canonical: 'https://web.kabseh.app',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     alternateLocale: ['ar_SA'],
-    url: 'https://Kabseeh.com',
+    url: 'https://web.kabseh.app',
     siteName: 'Kabseh',
     title: 'Kabseh for Delivery Services - The Best Food Delivery App',
     description: 'Kabseh connects you with the finest traditional restaurants. Fast, fair, and always fresh food delivery from your neighborhood.',

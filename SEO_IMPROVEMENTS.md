@@ -85,7 +85,7 @@ This document outlines all the SEO and performance optimizations implemented for
 http://localhost:3000/sitemap.xml
 
 # Production
-https://Kabseeh.com/sitemap.xml
+https://web.kabseh.app/sitemap.xml
 ```
 
 ### Test Robots.txt:
@@ -94,7 +94,7 @@ https://Kabseeh.com/sitemap.xml
 http://localhost:3000/robots.txt
 
 # Production  
-https://Kabseeh.com/robots.txt
+https://web.kabseh.app/robots.txt
 ```
 
 ### Test Manifest:
@@ -103,7 +103,7 @@ https://Kabseeh.com/robots.txt
 http://localhost:3000/manifest.json
 
 # Production
-https://Kabseeh.com/manifest.json
+https://web.kabseh.app/manifest.json
 ```
 
 ### Google Tools:
