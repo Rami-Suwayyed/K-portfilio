@@ -1,5 +1,6 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import TranslationProvider from '../components/TranslationProvider'
 
@@ -8,6 +9,12 @@ const montserrat = Montserrat({
   weight: ['400', '600', '700'],
   variable: '--font-montserrat'
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://web.kabseh.app'),
@@ -70,13 +77,11 @@ export const metadata: Metadata = {
     apple: '/images/favicon.ico',
   },
   manifest: '/manifest.json',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   verification: {
     google: 'G-0Z9SX67Z2E',
+  },
+  other: {
+    'google-adsense-account': 'ca-pub-2356875822234904',
   },
 }
 
@@ -85,22 +90,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Add suppressHydrationWarning to prevent hydration mismatches from browser extensions
   return (
-    <html lang="en">
-      <head>
-        <meta name="google-adsense-account" content="ca-pub-2356875822234904" />
-        <script 
-          async 
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={`${montserrat.variable} font-montserrat`}>
+        {/* Google AdSense */}
+        <Script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2356875822234904"
           crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
+        
         {/* Google Analytics */}
-        <script 
-          async 
+        <Script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-0Z9SX67Z2E"
+          strategy="afterInteractive"
         />
-        <script
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -110,8 +119,7 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body suppressHydrationWarning className={`${montserrat.variable} font-montserrat`}>
+        
         <TranslationProvider>
           {children}
         </TranslationProvider>
