@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description: 'Kabseh connects you with the finest traditional restaurants. Fast, fair, and always fresh food delivery from your neighborhood.',
     images: [
       {
-        url: '/images/logo.png',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Kabseh Food Delivery',
@@ -68,13 +68,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kabseh for Delivery Services - The Best Food Delivery App',
     description: 'Kabseh connects you with the finest traditional restaurants. Fast, fair, and always fresh food delivery.',
-    images: ['/images/logo.png'],
+    images: ['/images/og-image.png'],
     creator: '@kabsehjo',
-  },
-  icons: {
-    icon: '/images/favicon.ico',
-    shortcut: '/images/favicon.ico',
-    apple: '/images/favicon.ico',
   },
   manifest: '/manifest.json',
   verification: {

@@ -1,7 +1,7 @@
 // next.config.mjs
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
+  // your config
   output: 'export', // <-- REQUIRED for static export
   // basePath: "/web.kabseh.app",   // your folder name in cPanel (remove if using root)
   // assetPrefix: "/web.kabseh.app",// ensures images and JS use correct paths
@@ -9,7 +9,7 @@ const nextConfig = {
     // Disabling on production builds because we're running checks on PRs via GitHub Actions.
     ignoreDuringBuilds: true,
   },
-  trailingSlash: false,
+  trailingSlash: true, // emit folder/index.html so clean URLs resolve when out/ is copied to a static (Apache/cPanel) host
   reactStrictMode: true,
   poweredByHeader: false, // Remove X-Powered-By header for security
   compress: true, // Enable gzip compression
@@ -28,5 +28,6 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production', // Remove console.logs in production
   },
 };
+
 
 export default nextConfig;

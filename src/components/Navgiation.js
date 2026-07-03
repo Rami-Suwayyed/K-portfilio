@@ -1,70 +1,58 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import { Menu, X } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import Image from 'next/image'
-import logo from '../../public/images/Kabseh-Logo-white.png'
-import logoOrange from '../../public/images/Kabseh-LogoText.png'
+import logo from '../../public/images/brand/kabseh-logo-white.png'
+import logoOrange from '../../public/images/brand/kabseh-logo-red.png'
+
+const SECTION_IDS = ['home', 'about', 'feature', 'brands', 'downloadApp', 'contact']
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const [isMounted, setIsMounted] = useState(false)
+  const sentinelRef = useRef(null)
   const { t } = useTranslation()
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const closeMenu = () => setIsMenuOpen(false)
 
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
+  // Sticky toggle via a top sentinel (no scroll listener).
   useEffect(() => {
-    setIsMounted(true)
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      setIsSticky(scrollTop > 100)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const sentinel = sentinelRef.current
+    if (!sentinel) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsSticky(!entry.isIntersecting),
+      { rootMargin: '-80px 0px 0px 0px' }
+    )
+    observer.observe(sentinel)
+    return () => observer.disconnect()
   }, [])
 
+  // Active-section highlight via IntersectionObserver.
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'feature', 'brands', 'downloadApp', 'contact']
-      const scrollPosition = window.scrollY + 100
-
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean)
+    if (!elements.length) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible?.target?.id) setActiveSection(visible.target.id)
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 1] }
+    )
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const offsetTop = element.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
+      window.scrollTo({ top: element.offsetTop - 80, behavior: 'smooth' })
     }
     closeMenu()
   }
@@ -75,115 +63,106 @@ export default function Navigation() {
     { id: 'feature', label: t('navigation.feature') || 'Feature' },
     { id: 'brands', label: t('navigation.partners') || 'Partners' },
     { id: 'downloadApp', label: t('navigation.downloadApp') || 'Download App' },
-    { id: 'contact', label: t('navigation.contact') || 'Contact' }
+    { id: 'contact', label: t('navigation.contact') || 'Contact' },
   ]
 
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isSticky 
-        ? 'bg-white shadow-lg navbar-sticky' 
-        : 'bg-transparent'
-    }`}>
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-        <div className={`flex items-center justify-between transition-all duration-500 ${
-          isSticky ? 'h-16' : 'h-20'
-        }`}>
-          <Link 
-            href="/" 
-            className={`text-2xl font-bold transition-all duration-500 ${
-              isSticky 
-                ? 'text-primary-gradient' 
-                : 'text-white'
+    <>
+      <div ref={sentinelRef} aria-hidden className="absolute top-0 h-px w-px" />
+      <nav
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          isSticky ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-transparent'
+        }`}
+      >
+        <div className="mx-auto max-w-content px-4 lg:px-8">
+          <div className="flex h-[72px] items-center justify-between">
+            <Link href="/" onClick={() => scrollToSection('home')} aria-label="Kabseh">
+              <Image
+                src={isSticky ? logoOrange : logo}
+                alt="Kabseh"
+                width={698}
+                height={176}
+                className="h-9 w-auto object-contain"
+                priority
+              />
+            </Link>
+
+            <div className="hidden items-center gap-1 lg:flex">
+              {navItems.map((item) => {
+                const active = activeSection === item.id
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`relative rounded-full px-3.5 py-2 text-[15px] font-medium transition-colors duration-200 ${
+                      isSticky
+                        ? active
+                          ? 'text-primary'
+                          : 'text-ink-soft hover:text-ink'
+                        : active
+                          ? 'text-white'
+                          : 'text-white/80 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                    <span
+                      className={`absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-primary transition-all duration-300 ${
+                        active ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    />
+                  </button>
+                )
+              })}
+            </div>
+
+            <div className="flex items-center gap-2 md:gap-3">
+              <LanguageSwitcher />
+              <button
+                onClick={() => scrollToSection('downloadApp')}
+                className="btn btn-primary hidden px-5 py-2.5 text-sm md:inline-flex"
+              >
+                {t('buttons.startFreeTrial') || 'Get the app'}
+              </button>
+              <button
+                className={`rounded-full p-2 lg:hidden ${isSticky ? 'text-ink' : 'text-white'}`}
+                onClick={() => setIsMenuOpen((v) => !v)}
+                aria-label="Toggle menu"
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
+          </div>
+
+          <div
+            className={`overflow-hidden transition-all duration-300 lg:hidden ${
+              isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}
-            onClick={() => scrollToSection('home')}
           >
-            <Image 
-              src={isSticky ? logoOrange : logo} 
-              alt="Logo" 
-              width={100} 
-              height={100} 
-              className="transition-all duration-500"
-            />
-          </Link>
-
-          <div className="hidden lg:flex items-center space-x-6">
-            {navItems.map((item) => (
+            <div className="mb-3 mt-1 rounded-card bg-white p-2 shadow-soft">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full rounded-xl px-4 py-3 text-start transition-colors ${
+                    activeSection === item.id
+                      ? 'bg-cream text-primary'
+                      : 'text-ink-soft hover:bg-cream'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
               <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`nav-link-arrow relative px-4 py-2 font-medium text-lg transition-all duration-500 ${
-                  isSticky 
-                    ? 'text-gray-700 hover:text-primary' 
-                    : 'text-white hover:text-white'
-                } ${
-                  activeSection === item.id ? 'active' : ''
-                }`}
-                style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontSize: '18px',
-                  fontWeight: '500'
-                }}
+                onClick={() => scrollToSection('downloadApp')}
+                className="btn btn-primary mt-2 w-full py-3"
               >
-                {item.label}
+                {t('buttons.startFreeTrial') || 'Get the app'}
               </button>
-            ))}
-          </div>
-
-          <div className="flex items-center space-x-2 md:space-x-4">
-            <LanguageSwitcher />
-            <button 
-              onClick={() => scrollToSection('downloadApp')}
-              className="hidden md:block btn-primary-gradient px-4 md:px-6 py-2 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300 text-sm md:text-base"
-            >
-              {t('buttons.startFreeTrial') || 'Start Free Trial'}
-            </button>
-            <button
-              className="lg:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary ml-2"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-            >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-                } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : ''
-                } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-                } ${isSticky ? 'bg-gray-700' : 'bg-white'}`}></span>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="bg-white border-t border-gray-200 py-4 space-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 ${
-                  activeSection === item.id ? 'text-primary bg-gray-50' : ''
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="px-4 py-2 border-t border-gray-200 mt-4 pt-4">
-               <button 
-                 onClick={() => scrollToSection('downloadApp')} 
-                 className="w-full btn-secondary-gradient px-8 py-4 rounded-full text-white font-semibold hover:shadow-xl transition-all duration-300"
-               >
-                 {t('buttons.startFreeTrial')}
-               </button>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   )
 }

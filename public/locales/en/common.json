@@ -131,6 +131,8 @@
       "namePlaceholder": "Enter your full name",
       "email": "Email Address",
       "emailPlaceholder": "Enter your email address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
       "subject": "Subject",
       "subjectPlaceholder": "What's this about?",
       "message": "Message",
@@ -170,6 +172,8 @@
     }
   },
   "easySteps": {
+    "subtitle": "How it works",
+    "title": "Order in 3 easy steps",
     "title1": "Install the App",
     "description1": "Get Kabseh from your app store and create your account to start exploring traditional flavors in your area.",
     "title2": "Setup Your Profile",
@@ -204,6 +208,8 @@
   },
   "modal": {
     "title": "Register Resturant",
+    "errorValidation": "Please check the form and try again.",
+    "errorRetry": "Could not reach the server. Please try again.",
     "name": "Restaurant Name",
     "email":"Email Address",
     "nameOfOwner": "Owner or The ِAuthorized Person Name",
@@ -213,13 +219,27 @@
     "locationPlaceholder": "Enter your location",
     "location": "Location",
     "submit": "Submit",
+    "submitting": "Submitting...",
     "successMessage": "Message sent successfully! We'll get back to you soon.",
     "errorMessage": "Something went wrong. Please try again."
+  },
+  "register": {
+    "backToHome": "Back to home",
+    "successTitle": "Thank you!",
+    "successText": "We've received your registration. Our team will review it and reach out to you shortly."
+  },
+  "brandPage": {
+    "deliveryTitle": "Delivery available through Kabseh",
+    "deliveryText": "Order from {{brand}} and your other favourite restaurants on the Kabseh app. Fast, fair, and always fresh.",
+    "orderCta": "Order on Kabseh",
+    "downloadCta": "Download the app",
+    "related": "Related",
+    "browse": "Browse on Kabseh"
   },
   "clients": {
     "title": "Top Restaurant",
     "subtitle": "Brands in Jordan",
-    "description": "Partner with Jordan&apos;s most trusted restaurant brands and enjoy seamless food delivery",
+    "description": "Partner with Jordan's most trusted restaurant brands and enjoy seamless food delivery",
     "button": "View All Partners"
   },
     "modalCaptin": {
@@ -250,7 +270,21 @@
       "phoneType": "Phone Type",
       "phoneTypePlaceholder": "Select your phone type",
       "ios": "iOS",
-      "android": "Android"
+      "android": "Android",
+      "governorate": "Governorate",
+      "governoratePlaceholder": "Select your governorate",
+      "amman": "Amman",
+      "irbid": "Irbid",
+      "zarqa": "Zarqa",
+      "mafraq": "Mafraq",
+      "ajloun": "Ajloun",
+      "jerash": "Jerash",
+      "madaba": "Madaba",
+      "balqa": "Balqa",
+      "karak": "Karak",
+      "tafilah": "Tafilah",
+      "maan": "Ma'an",
+      "aqaba": "Aqaba"
   },
   "footer": {
   "address": "Address",

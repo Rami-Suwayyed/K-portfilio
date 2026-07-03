@@ -4,58 +4,44 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#D90416',
-        secondary: {
-          light: '#fff8f2',
-          dark: '#4f8765',
+        primary: {
+          DEFAULT: '#d90217',
+          dark: '#b80214',
         },
-        text: {
-          heading: '#ffffff',
-          body: '#333333',
-          link: '#ffffff',
-          'link-hover': '#D90416',
+        brand: {
+          green: '#4f8765',
+          'green-dark': '#3c6a4e',
         },
-        background: {
-          default: '#fff8f2',
+        cream: {
+          DEFAULT: '#fff8f2',
+          200: '#fdeee3',
+        },
+        ink: {
+          DEFAULT: '#2a1d16',
+          soft: '#6b5b50',
         },
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
-      },
-      fontSize: {
-        'h1': ['48px', '1.2'],
-        'h2': ['36px', '1.2'],
-        'h3': ['24px', '1.2'],
-        'body': ['16px', '1.6'],
-        'sm': ['14px', '1.6'],
-      },
-      spacing: {
-        'xs': '4px',
-        'sm': '8px',
-        'md': '16px',
-        'lg': '32px',
-        'xl': '64px',
+        montserrat: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
       },
       borderRadius: {
-        'custom': '50px',
-      },
-      backgroundImage: {
-        'hero-gradient': 'linear-gradient(135deg, rgba(217,4,22,0.8), rgba(79,135,101,0.8))',
-        'button-gradient': 'linear-gradient(135deg, #D90416, #4f8765)',
-        'dots-pattern': 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 2px, transparent 2px)',
-        'triangles-pattern': 'conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.1) 0deg, transparent 120deg, rgba(255,255,255,0.1) 240deg, transparent 360deg)',
+        card: '1.25rem',
+        block: '2rem',
       },
       boxShadow: {
-        'custom': '0 4px 12px rgba(0,0,0,0.1)',
+        soft: '0 10px 30px -12px rgba(42,29,22,0.18)',
+        warm: '0 24px 60px -24px rgba(217,4,22,0.28)',
+      },
+      maxWidth: {
+        content: '1200px',
       },
       screens: {
-        'mobile': '480px',
-        'tablet': '768px',
-        'desktop': '1024px',
+        xs: '480px',
       },
     },
   },

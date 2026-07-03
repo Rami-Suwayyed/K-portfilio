@@ -1,0 +1,81 @@
+// Partner restaurant brands — local snapshot (previously served by the backend,
+// spec 011). Logos live in public/images/restaurant-brands/. To add/edit a brand,
+// update this list and drop its logo in that folder, then rebuild.
+export const brands = [
+  {
+    id: 1,
+    slug: 'al-thawaq-jordan',
+    sort_order: 1,
+    logo: '/images/restaurant-brands/al-thawaq-jordan.jpg',
+    title: { en: 'Al Thawaq', ar: 'الذواق' },
+    logo_alt: { en: 'Al Thawaq logo', ar: 'شعار الذواق' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 2,
+    slug: 'army-burger-jordan',
+    sort_order: 2,
+    logo: '/images/restaurant-brands/army-burger-jordan.jpg',
+    title: { en: 'Army Burger', ar: 'آرمي برجر' },
+    logo_alt: { en: 'Army Burger logo', ar: 'شعار آرمي برجر' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 3,
+    slug: 'deek-jordan',
+    sort_order: 3,
+    logo: '/images/restaurant-brands/deek-jordan.jpg',
+    title: { en: 'Deek', ar: 'ديك' },
+    logo_alt: { en: 'Deek logo', ar: 'شعار ديك' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 4,
+    slug: 'farooj-abu-al-abed-jordan',
+    sort_order: 4,
+    logo: '/images/restaurant-brands/farooj-abu-al-abed-jordan.jpg',
+    title: { en: 'Farooj Abu Al-Abed', ar: 'فروج أبو العبد' },
+    logo_alt: { en: 'Farooj Abu Al-Abed logo', ar: 'شعار فروج أبو العبد' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 5,
+    slug: 'salwa-fairuz-jordan',
+    sort_order: 5,
+    logo: '/images/restaurant-brands/salwa-fairuz-jordan.jpg',
+    title: { en: 'Salwa & Fairuz', ar: 'سلوى وفيروز' },
+    logo_alt: { en: 'Salwa & Fairuz logo', ar: 'شعار سلوى وفيروز' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 6,
+    slug: 'chef-eyad-jordan',
+    sort_order: 6,
+    logo: '/images/restaurant-brands/chef-eyad-jordan.jpg',
+    title: { en: 'Chef Eyad', ar: 'شيف إياد' },
+    logo_alt: { en: 'Chef Eyad logo', ar: 'شعار شيف إياد' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 7,
+    slug: 'al-hanini-jordan',
+    sort_order: 7,
+    logo: '/images/restaurant-brands/al-hanini-jordan.jpg',
+    title: { en: 'Al Hanini Restaurant', ar: 'مطعم الحنيني' },
+    logo_alt: { en: 'Al Hanini Restaurant logo', ar: 'شعار مطعم الحنيني' },
+    description: { en: null, ar: null },
+  },
+  {
+    id: 8,
+    slug: 'almond-coffee-house-jordan',
+    sort_order: 8,
+    logo: '/images/restaurant-brands/almond-coffee-house-jordan.jpg',
+    title: { en: 'Almond Coffee House', ar: 'ألموند كوفي هاوس' },
+    logo_alt: { en: 'Almond Coffee House logo', ar: 'شعار ألموند كوفي هاوس' },
+    description: { en: null, ar: null },
+  },
+]
+
+export function getBrandBySlug(slug) {
+  return brands.find((b) => b.slug === slug) || null
+}
